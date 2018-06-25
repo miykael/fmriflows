@@ -1,0 +1,21 @@
+{
+    "subject_list": [
+        "01",
+        "02"
+    ],
+    "session_list": [
+        "test"
+    ],
+    "run_list": [
+        "01"
+    ],
+    "fwhm": [
+        6
+    ],
+    "fwhm_bp": 6,
+    "voxel_res": 4,
+    "ref_slice": 1250,
+    "hpf": 100,
+    "ncomp": 6,
+    "n_proc": 8
+}
