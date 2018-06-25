@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:18.05.0-ce-git
+    steps:
+      - checkout
+  test_nb:
+    docker:
+      - image: docker:18.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: docker build 1
+          no_output_timeout: 60m
+          command: |
+            docker build -t miykael/fmriflows:$CIRCLE_BRANCH .
+      - run:
+          name: run tests 1
+          no_output_timeout: 120m
+          command: |
+            docker run -it --rm miykael/fmriflows:$CIRCLE_BRANCH python /home/neuro/test_notebooks.py
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test_nb:
+          requires:
+            - build
