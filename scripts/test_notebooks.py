@@ -21,7 +21,7 @@ def prepare_test_data():
     os.system(cmd)
 
     print('Move test data to data folder.')
-    os.system('cp -rl ds000114/sub-0[12] /data')
+    os.system('cp -rl /home/neuro/notebooks/ds000114/ds000114/sub-0[12] /data')
 
     print('Renmae files to be conform to fmriflows.')
     cmd = 'mv /data/sub-01/ses-test/func/sub-01_ses-test_task-fingerfootlips_bold.nii.gz '
