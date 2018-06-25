@@ -1,0 +1,12 @@
+# python cache
+*.pyc
+
+# git
+.gitignore
+.git/**/*
+.git
+
+# CI, etc.
+.circleci
+.circleci/**/*
+.zenodo.json
