@@ -1,0 +1,30 @@
+{
+  "title": "fMRIFlows",
+  "publication_date": "2018-08-15",
+  "version": "",
+  "creators": [
+    {
+      "affiliation": "The Laboratory for Investigative Neurophysiology (The LINE), Department of Radiology and Department of Clinical Neurosciences, Lausanne, Switzerland; Center for Biomedical Imaging (CIBM), Lausanne, Switzerland",
+      "name": "Notter, Michael Philipp",
+      "orcid": "0000-0002-5866-047X"
+    },
+    {
+      "affiliation": "International Laboratory for Brain, Music and Sound Research (BRAMS), Philipps-University Marburg, Marburg, Hesse, Germany",
+      "name": "Heerholz, Peer",
+      "orcid": "0000-0002-9840-6257"
+    },
+    {
+      "affiliation": "The Laboratory for Investigative Neurophysiology (The LINE), Department of Radiology and Department of Clinical Neurosciences, Lausanne, Switzerland; Center for Biomedical Imaging (CIBM), Lausanne, Switzerland",
+      "name": "Murray, Micah M.",
+      "orcid": "0000-0002-7821-117X"
+    }
+  ],
+  "keywords": [
+    "neuroimaging",
+    "fMRI analysis",
+    "workflow",
+    "pipeline"
+  ],
+  "license": "BSD-3-Clause",
+  "upload_type": "software"
+}
