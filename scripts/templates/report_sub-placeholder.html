@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Report: sub-placeholder</title>
+  <style type="text/css">
+    html {box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+    *,*:before,*:after {box-sizing:inherit}
+    body {margin:0}
+    button {font:inherit;margin:0}
+    html,body {font-family:Verdana,sans-serif;font-size:15px;line-height:1.5}
+    h1 {font-size:36px}
+    h2 {font-size:30px}
+    h3 {font-size:24px}
+    h1,h2,h3 {font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}
+    .w3-bar .w3-bar-item {padding:8px 16px;float:left;width:auto;border:none;display:block;outline:0}
+    .w3-bar-block .w3-bar-item {width:100%;display:block;padding:8px 16px;text-align:left;border:none;white-space:normal;float:none;outline:0}
+    .w3-bar {width:100%;overflow:hidden}
+    .w3-button:hover {color:#000!important;background-color:#ccc!important}
+    .w3-button {border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+    .w3-card-4 {box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)}
+    .w3-container {padding:0.01em 16px}
+    .w3-dark-grey {color:#fff!important;background-color:#616161!important}
+    .w3-light-grey {color:#000!important;background-color:#f1f1f1!important}
+    .w3-large {font-size:24px!important}
+    .w3-padding-16 {padding-top:16px!important;padding-bottom:16px!important}
+    .w3-right {float:right!important}
+    .w3-sidebar {height:100%;width:200px;background-color:#fff;position:fixed!important;z-index:1;overflow:auto}
+  </style>
+</head>
+<script>
+function report_open() {
+  document.getElementById("main").style.marginLeft = "200px";
+  document.getElementById("mySidebar").style.width = "200px";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function report_close() {
+  document.getElementById("main").style.marginLeft = "0";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+<body style="background:#e6e6e6;color:black;">
+  <div class="w3-sidebar w3-light-grey w3-card-4" style="width:200px" id="mySidebar">
+    <div class="w3-bar w3-dark-grey">
+      <span class="w3-bar-item w3-padding-16">Reports</span>
+      <button onclick="report_close()" class="w3-bar-item w3-button w3-right w3-padding-16" title="Close Selection">×</button>
+    </div>
+    <div class="w3-bar-block">
+      <a class="w3-bar-item w3-button" href="#preproc_anat">Anatomical Preprocessing</a>
+      <a class="w3-bar-item w3-button" href="#preproc_func">Functional Preprocessing</a>
+      <a class="w3-bar-item w3-button" href="#uni_1st">Univariate 1st-Level</a>
+      <a class="w3-bar-item w3-button" href="#multi_1st">Multivariate 1nd-Level</a>
+      <p></p>
+    </div>
+  </div>
+  <div id="main" style="margin-left:200px">
+    <div class="w3-container">
+      <span title="open Sidebar" style="display:none" id="openNav" class="w3-button w3-large" onclick="report_open()">☰</span>
+      <h1 class="h1" style="position:left;font-weight:bold;text-align:center">Report: sub-placeholder</h1>
+      <h2 class="h2" style="position:left;font-weight:bold"><a name="preproc_anat">Anatomical Preprocessing</a></h2>
+      <h3 class="h3" style="position:left;font-weight:bold">Tissue Segmentation of T1w</h3>
+      <p>This panel shows quality of the T1-weighted image segmentation of sub-placeholder, with brain tissues highlighted in green for Gray Matter (GM), in beige for White Matter (WM) and in blue for Cerebral Spinal Fluid (CSF).</p>
+      <object data="/home/line/Desktop/datasink/segment.svg" type="image/svg+xml" style="width:100%"></object>
+      <h3 class="h3" style="position:left;font-weight:bold">Brain Extraction of T1w</h3>
+      <p>This panel shows the quality of the brain extraction of sub-placeholder. The brain highlighted in red is overlayed on the subject specific T1-weighted image in gray.</p>
+      <object data="/home/line/Desktop/datasink/brain.svg" type="image/svg+xml" style="width:100%"></object>
+      <h3 class="h3" style="position:left;font-weight:bold">T1w to MNI registration</h3>
+      <p>This panel shows the quality of the nonlinear template registration of sub-placeholder. The normalized brain highlighted in red is overlayed on the ICBM T1-weighted template image in gray.</p>
+      <object data="/home/line/Desktop/datasink/brain.svg" type="image/svg+xml" style="width:100%"></object>
+      <h2 class="h2" style="position:left;font-weight:bold"><a name="preproc_func">Functional Preprocessing</a></h2>
+      <p>The functional preprocessing pipeline hasn't been run yet.</p>
+      <h2 class="h2" style="position:left;font-weight:bold"><a name="uni_1st">Univariate 1st-Level</a></h2>
+      <p>The univariate 1st-level pipeline hasn't been run yet.</p>
+      <h2 class="h2" style="position:left;font-weight:bold"><a name="multi_1st">Multivariate 1st-Level</a></h2>
+      <p>The multivariate 1st-level pipeline hasn't been run yet.</p>
+    </div>
+  </div>
+</body>
+</html>
+
