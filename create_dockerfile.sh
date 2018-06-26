@@ -6,7 +6,6 @@ docker run --rm kaczmarj/neurodocker:master generate docker \
                      git-annex-standalone git-annex-remote-rclone \
            --spm12 version=dev \
            --ants version=2.2.0 method=binaries \
-           --convert3d version=1.0.0 \
            --install fsl-core fsl-harvard-oxford-atlases fsl-harvard-oxford-cortical-lateralized-atlas \
            --add-to-entrypoint "source /etc/fsl/fsl.sh" \
            --user=neuro \
