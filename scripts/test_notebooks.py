@@ -50,7 +50,20 @@ def reduce_comp_time_anat():
         if 'code' == cell['cell_type']:
             if 'Normalize anatomy to ICBM template' in cell['source']:
                 txt = cell['source']
-                txt = txt.replace('100, 70, 50, 20', '50, 25, 4, 2')
+                txt = txt.replace('\'Rigid\', \'Affine\', \'SyN\'', '\'Rigid\', \'Affine\'')
+                txt = txt.replace('(0.1, 3.0, 0.0)', '')
+                txt = txt.replace('\'Mattes\', \'Mattes\', \'CC\'', '\'Mattes\', \'Mattes\'')
+                txt = txt.replace('[1.0] * 3', '[1.0] * 2')
+                txt = txt.replace('[56, 56, 4]', '[56, 56]')
+                txt = txt.replace('\'Regular\', \'Regular\', \'None\'', '\'Regular\', \'Regular\'')
+                txt = txt.replace('0.25, 0.25, 1', '0.25, 0.25')
+                txt = txt.replace('[100, 50, 20, 10]', '')
+                txt = txt.replace('[1e-06] * 3', ' [1e-06] * 2')
+                txt = txt.replace('[20, 20, 10]', ' [20, 20]')
+                txt = txt.replace('[[2, 1], [1, 0], [3, 2, 1, 0]]', ' [[2, 1], [1, 0]]')
+                txt = txt.replace('[\'vox\'] * 3', ' [\'vox\'] * 2')
+                txt = txt.replace('[[2, 1], [2, 1], [8, 4, 2, 1]]', ' [[2, 1], [2, 1]]')
+                txt = txt.replace('[True ,True, True]', ' [True ,True]')
                 cell['source'] = txt
 
     # Overwrite notebook with new changes
