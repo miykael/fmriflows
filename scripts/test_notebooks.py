@@ -32,7 +32,7 @@ def prepare_test_data():
     os.system(cmd)
 
     print('Copy fmriflows configuration files to data folder.')
-    os.system('cp examples/* /data')
+    os.system('cp /home/neuro/examples/* /data')
 
 
 def reduce_comp_time_anat():
