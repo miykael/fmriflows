@@ -1,0 +1,25 @@
+{
+    "subject_list": [
+        "01",
+        "02"
+    ],
+    "session_list": [
+        "test"
+    ],
+    "run_list": [
+        "01"
+    ],
+    "task_list" : [
+        "fingerfootlips"
+    ],
+    "filters_spatial": [
+        ["LP", 6]
+    ],
+    "filters_temporal": [
+        ["None", 100]
+    ],
+    "voxel_res": 4,
+    "ref_slice": 1250,
+    "n_confound_comp": 6,
+    "n_paralle_jobs": 8
+}
