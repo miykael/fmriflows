@@ -20,7 +20,7 @@ docker run --rm kaczmarj/neurodocker:master generate docker \
              activate=True \
            --user=root \
            --run 'mkdir /data && chmod 777 /data && chmod a+s /data' \
-           --run 'mkdir /output && chmod 777 /output && chmod a+s /output' \
+           --run 'mkdir /workingdir && chmod 777 /workingdir && chmod a+s /workingdir' \
            --run 'mkdir /templates && chmod 777 /templates && chmod a+s /templates' \
            --run 'curl -qLO http://www.bic.mni.mcgill.ca/~vfonov/icbm/2009/mni_icbm152_nlin_asym_09c_nifti.zip \
                   && unzip mni_icbm152_nlin_asym_09c_nifti.zip -d /templates \
