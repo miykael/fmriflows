@@ -7,5 +7,5 @@
         "test"
     ],
     "T1_id": "T1w",
-    "n_proc": 8
+    "n_parallel_jobs": 8
 }
