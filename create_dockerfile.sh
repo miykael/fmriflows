@@ -2,7 +2,7 @@
 docker run --rm kaczmarj/neurodocker:master generate docker \
            --base neurodebian:stretch-non-free \
            --pkg-manager apt \
-           --install gcc g++ graphviz tree less swig convert3d \
+           --install gcc g++ graphviz tree less swig convert3d netbase \
                      git-annex-standalone git-annex-remote-rclone \
            --spm12 version=dev \
            --ants version=2.2.0 method=binaries \
