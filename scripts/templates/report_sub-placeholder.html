@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Report: sub-placeholder</title>
+  <title>Report: sub-placeholder ses-placeholder</title>
   <style type="text/css">
     html {box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
     *,*:before,*:after {box-sizing:inherit}
@@ -59,26 +59,39 @@ function report_close() {
     <div class="w3-container">
       <span title="open Sidebar" style="display:none" id="openNav" class="w3-button w3-large" onclick="report_open()">☰</span>
       <h1 class="h1" style="position:left;font-weight:bold;text-align:center">Report: sub-placeholder</h1>
+
+      <!-- Section: Anatomical Preprocessing-->
       <h2 class="h2" style="position:left;font-weight:bold"><a name="preproc_anat">Anatomical Preprocessing</a></h2>
+
       <h3 class="h3" style="position:left;font-weight:bold">Tissue Segmentation of T1w</h3>
       <p>This panel shows quality of the T1-weighted image segmentation of sub-placeholder, with brain tissues highlighted in green for Gray Matter (GM), in beige for White Matter (WM) and in blue for Cerebral Spinal Fluid (CSF).</p>
-      <object data="/home/line/Desktop/datasink/segment.svg" type="image/svg+xml" style="width:100%"></object>
+      <object data="sub-placeholder/ses-placeholder_segmentation.svg" type="image/svg+xml" style="width:100%"></object>
+
       <h3 class="h3" style="position:left;font-weight:bold">Brain Extraction of T1w</h3>
       <p>This panel shows the quality of the brain extraction of sub-placeholder. The brain highlighted in red is overlayed on the subject specific T1-weighted image in gray.</p>
-      <object data="/home/line/Desktop/datasink/brain.svg" type="image/svg+xml" style="width:100%"></object>
+      <object data="sub-placeholder/ses-placeholder_brain.svg" type="image/svg+xml" style="width:100%"></object>
+
       <h3 class="h3" style="position:left;font-weight:bold">T1w to MNI registration</h3>
       <p>This panel shows the quality of the nonlinear template registration of sub-placeholder. The normalized brain highlighted in red is overlayed on the ICBM T1-weighted template image in gray.</p>
-      <object data="/home/line/Desktop/datasink/brain.svg" type="image/svg+xml" style="width:100%"></object>
+      <object data="sub-placeholder/ses-placeholder_transform_Warped.svg" type="image/svg+xml" style="width:100%"></object>
+
       <h3 class="h3" style="position:left;font-weight:bold">Graph of Anatomical Preprocessing pipeline</h3>
-      <object data="/home/line/Desktop/datasink/graph.svg" type="image/svg+xml" style="width:100%"></object>
+      <object data="graph.svg" type="image/svg+xml" style="width:100%"></object>
+      <object data="graph_detailed.svg" type="image/svg+xml" style="width:100%"></object>
+
+      <!-- Section: Functional Preprocessing-->
       <h2 class="h2" style="position:left;font-weight:bold"><a name="preproc_func">Functional Preprocessing</a></h2>
       <p>The functional preprocessing pipeline hasn't been run yet.</p>
+
+      <!-- Section: 1st-Level Univariate Results-->
       <h2 class="h2" style="position:left;font-weight:bold"><a name="uni_1st">Univariate 1st-Level</a></h2>
       <p>The univariate 1st-level pipeline hasn't been run yet.</p>
+
+      <!-- Section: 1st-Level Multivariate Results-->
       <h2 class="h2" style="position:left;font-weight:bold"><a name="multi_1st">Multivariate 1st-Level</a></h2>
       <p>The multivariate 1st-level pipeline hasn't been run yet.</p>
+
     </div>
   </div>
 </body>
 </html>
-
