@@ -44,6 +44,6 @@ docker run --rm kaczmarj/neurodocker:master generate docker \
            --run 'chown -R neuro /templates' \
            --run 'rm -rf /opt/conda/pkgs/*' \
            --user=neuro \
+           --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"*\" > ~/.jupyter/jupyter_notebook_config.py' \
            --workdir /home/neuro/notebooks \
-           --expose 8888 \
-           --cmd "jupyter notebook --port=8888 --ip=0.0.0.0" > Dockerfile
+           --cmd "jupyter-notebook" > Dockerfile
