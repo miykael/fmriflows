@@ -9,7 +9,7 @@ docker run --rm kaczmarj/neurodocker:master generate docker \
            --install fsl-core fsl-harvard-oxford-atlases fsl-harvard-oxford-cortical-lateralized-atlas \
            --add-to-entrypoint "source /etc/fsl/fsl.sh" \
            --user=neuro \
-           --miniconda miniconda_version="4.5.4" \
+           --miniconda \
              conda_install="python=3.6 ipython pytest jupyter jupyterlab jupyter_contrib_nbextensions
                             numpy scipy pandas matplotlib seaborn nipy pyface sphinx h5py joblib
                             traits scikit-learn scikit-image nbformat nb_conda statsmodels" \
@@ -44,6 +44,6 @@ docker run --rm kaczmarj/neurodocker:master generate docker \
            --run 'chown -R neuro /templates' \
            --run 'rm -rf /opt/conda/pkgs/*' \
            --user=neuro \
-           --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"*\" > ~/.jupyter/jupyter_notebook_config.py' \
            --workdir /home/neuro/notebooks \
-           --cmd "jupyter-notebook" > Dockerfile
+           --expose 8888 \
+           --cmd "jupyter notebook --port=8888 --ip=0.0.0.0" > Dockerfile
