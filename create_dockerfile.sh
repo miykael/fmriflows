@@ -42,6 +42,7 @@ docker run --rm kaczmarj/neurodocker:master generate docker \
            --copy scripts/test_notebooks.py "/home/neuro/test_notebooks.py" \
            --run 'chown -R neuro /home/neuro' \
            --run 'chown -R neuro /templates' \
+           --run 'chown -R neuro /data' \
            --run 'rm -rf /opt/conda/pkgs/*' \
            --user=neuro \
            --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"*\" > ~/.jupyter/jupyter_notebook_config.py' \
