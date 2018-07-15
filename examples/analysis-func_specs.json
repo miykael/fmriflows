@@ -18,8 +18,13 @@
     "filters_temporal": [
         ["None", 100]
     ],
+    "artifact_parameters" : {
+        "norm_threshold": 1,
+        "zintensity_threshold": 2.58,
+        "use_differences": ["True", "False"]
+    },
     "voxel_res": 4,
-    "ref_slice": 1250,
+    "ref_timepoint": 1250,
     "n_confound_comp": 6,
     "n_parallel_jobs": 8
 }
