@@ -9,10 +9,9 @@
 [![Docker Hub](https://img.shields.io/docker/pulls/miykael/fmriflows.svg?maxAge=2592000)](https://hub.docker.com/r/miykael/fmriflows/)
 [![GitHub HitCount](http://hits.dwyl.io/miykael/fmriflows.svg)](http://hits.dwyl.io/miykael/fmriflows)
 
-
-
 All of this is still under heavy development and a proper README will follow. But first, I want to clearly point out that this repo was inspired by [fmriprep](https://github.com/poldracklab/fmriprep). And so it should come with no surprise that many similarities can be found.
 
+But where [fmriprep](https://github.com/poldracklab/fmriprep) is rather a preprocessing "glass" box than a black box, fmriflows is a shoebox. Easy to open and understand what's inside and simple to change things that are inside!
 
 # Feedback, Help & Support
 
