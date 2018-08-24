@@ -1,30 +1,24 @@
 {
     "subject_list": [
-        "01",
-        "02"
-    ],
-    "session_list": [
-        "test"
-    ],
-    "run_list": [
         "01"
     ],
-    "task_list" : [
-        "fingerfootlips"
+    "task_list": [
+        "memory"
     ],
     "filters_spatial": [
-        ["LP", 6]
+        ["LP", 7],
+        ["BP", 7]
     ],
     "filters_temporal": [
         ["None", 100]
     ],
-    "artifact_parameters" : {
+    "artifact_parameters": {
         "norm_threshold": 1,
         "zintensity_threshold": 2.58,
         "use_differences": ["True", "False"]
     },
-    "voxel_res": 4,
-    "ref_timepoint": 1250,
+    "voxel_res": 3.5,
+    "ref_timepoint": 1000,
     "n_confound_comp": 6,
     "n_parallel_jobs": 8
 }
