@@ -13,7 +13,7 @@ def prepare_test_data():
     os.system('datalad install ///workshops/nih-2017/ds000114')
 
     print('Download required data.')
-    task = ''
+    task = 'fingerfootlips'
     cmd = 'datalad get -J 4 '
     for i in [1, 2]:
         cmd += 'ds000114/sub-%02d/ses-test/anat/' % i
