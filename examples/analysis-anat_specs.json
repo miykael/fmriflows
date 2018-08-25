@@ -4,6 +4,6 @@
         "02"
     ],
     "T1_id": "T1w",
-    "vox_res": [1, 1, 1],
-    "n_parallel_jobs": 8
+    "vox_res": [4, 4, 4],
+    "n_parallel_jobs": 4
 }
