@@ -36,6 +36,12 @@ def prepare_test_data():
     print('Copy fmriflows configuration files to data folder.')
     os.system('cp /home/neuro/examples/* /data')
 
+    print('Move event file into subject folder')
+    for i in [1, 2]:
+        cmd = 'cp /home/neuro/examples/task-fingerfootlips_events.tsv '
+        cmd += '/data/sub-%02d/ses-test/func/' % i
+        cmd += 'sub-%02d_ses-test_task-%s_run-01_events.tsv' % (i, task)
+        os.system(cmd)
 
 def reduce_comp_time_anat():
     """
