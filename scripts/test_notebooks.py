@@ -23,7 +23,7 @@ def prepare_test_data():
     os.system(cmd)
 
     print('Move test data to data folder.')
-    os.system('cp -rl /home/neuro/notebooks/ds000114/* /data/.')
+    os.system('cp -lR /home/neuro/notebooks/ds000114/* /data/.')
 
     print('Renmae files to be conform to fmriflows.')
     for i in [1, 2]:
@@ -89,20 +89,23 @@ def reduce_comp_time_normalization():
     """
     Decrease voxel resolution after normalization to reduce computation time on CircleCi.
     """
-    j = '/data/analysis-anat_specs.json'
 
     import json
 
-    # Read JSON file
-    with open(j) as json_file:
-        data = json.load(json_file)
+    for j in ['/data/analysis-anat_specs.json',
+              '/data/analysis-1stlevel_specs.json']:
 
-    # Change value
-    data['vox_res'] = [4, 4, 4]
+        # Read JSON file
+        with open(j) as json_file:
+            data = json.load(json_file)
 
-    # Save JSON file
-    with open(j, 'w') as outfile:
-        json.dump(data, outfile)
+        # Change value
+        data['vox_res'] = [4, 4, 4]
+        data['norm_res'] = [4, 4, 4]
+
+        # Save JSON file
+        with open(j, 'w') as outfile:
+            json.dump(data, outfile)
 
     print('Normalization parameter simplified.')
 
