@@ -23,7 +23,7 @@ def prepare_test_data():
     os.system(cmd)
 
     print('Move test data to data folder.')
-    os.system('cp -rl /home/neuro/notebooks/ds000114/sub-0[12] /data')
+    os.system('cp -rl /home/neuro/notebooks/ds000114/* /data/.')
 
     print('Renmae files to be conform to fmriflows.')
     for i in [1, 2]:
@@ -36,6 +36,12 @@ def prepare_test_data():
     print('Copy fmriflows configuration files to data folder.')
     os.system('cp /home/neuro/examples/* /data')
 
+    print('Move event file into subject folder.')
+    for i in [1, 2]:
+        cmd = 'cp /home/neuro/examples/task-fingerfootlips_events.tsv '
+        cmd += '/data/sub-%02d/ses-test/func/' % i
+        cmd += 'sub-%02d_ses-test_task-%s_run-01_events.tsv' % (i, task)
+        os.system(cmd)
 
 def reduce_comp_time_anat():
     """
@@ -79,11 +85,34 @@ def reduce_comp_time_anat():
     print('ANTs Registration simplified.')
 
 
+def reduce_comp_time_normalization():
+    """
+    Decrease voxel resolution after normalization to reduce computation time on CircleCi.
+    """
+    j = '/data/analysis-anat_specs.json'
+
+    import json
+
+    # Read JSON file
+    with open(j) as json_file:
+        data = json.load(json_file)
+
+    # Change value
+    data['vox_res'] = [4, 4, 4]
+
+    # Save JSON file
+    with open(j, 'w') as outfile:
+        json.dump(data, outfile)
+
+    print('Normalization parameter simplified.')
+
+
 if __name__ == '__main__':
 
     test_version()
     prepare_test_data()
     reduce_comp_time_anat()
+    reduce_comp_time_normalization()
 
     # Notebooks that should be tested
     notebooks = [
