@@ -2,9 +2,10 @@
 docker run --rm kaczmarj/neurodocker:master generate docker \
            --base neurodebian:stretch-non-free \
            --pkg-manager apt \
-           --install ants gcc g++ graphviz tree less swig convert3d netbase \
+           --install gcc g++ graphviz tree less swig convert3d netbase \
                      git-annex-standalone git-annex-remote-rclone \
            --spm12 version=dev \
+           --ants version=2.2.0 method=binaries \
            --install fsl-core fsl-harvard-oxford-atlases fsl-harvard-oxford-cortical-lateralized-atlas \
            --add-to-entrypoint "source /etc/fsl/fsl.sh" \
            --user=neuro \
