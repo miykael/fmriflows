@@ -31,3 +31,7 @@ workflows:
       - test_nb:
           requires:
             - build
+
+notify:
+  webhooks:
+    - url: https://webhooks.gitter.im/e/677c17db827f385f3ce4

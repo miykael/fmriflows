@@ -1,0 +1,53 @@
+{
+    "analysis_postfix": "fingerfootlips",
+    "task_id": "fingerfootlips",
+    "subject_list": [
+        "01",
+        "02"
+    ],
+    "filters_spatial": [
+        ["LP", 6]
+    ],
+    "filters_temporal": [
+        ["None", 100]
+    ],
+    "nuisance_regressors": [
+        "FD"
+    ],
+    "use_outliers": true,
+    "model_serial_correlations": "AR(1)",
+    "model_bases": {
+        "name": "hrf",
+        "derivs": [1, 0]
+    },
+    "estimation_method": {
+        "name": "Classical",
+        "value": 1
+    },
+    "condition_names": [
+        "Finger",
+        "Foot",
+        "Lips"
+    ],
+    "contrasts": [
+        {
+            "name": "Finger",
+            "weights": [1, 0, 0],
+            "type": "T"
+        },
+        {
+            "name": "Foot",
+            "weights": [0, 1, 0],
+            "type": "T"
+        },
+        {
+            "name": "Lips",
+            "weights": [0, 0, 1],
+            "type": "T"
+        }
+    ],
+    "con_per_run": true,
+    "normalize": true,
+    "norm_res": [1, 1, 1],
+    "n_parallel_jobs": 4
+}
