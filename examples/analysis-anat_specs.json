@@ -3,9 +3,7 @@
         "01",
         "02"
     ],
-    "session_list": [
-        "test"
-    ],
     "T1_id": "T1w",
-    "n_parallel_jobs": 8
+    "vox_res": [1, 1, 1],
+    "n_parallel_jobs": 4
 }
