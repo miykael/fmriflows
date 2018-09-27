@@ -1,6 +1,6 @@
 # fMRIFlows
 
-[![CircleCi](https://img.shields.io/circleci/project/miykael/fmriflows/master.svg?maxAge=2592000)](https://circleci.com/gh/miykael/fmriflows/tree/master)
+[![CircleCi](https://circleci.com/gh/miykael/fmriflows.svg?style=shield)](https://circleci.com/gh/miykael/fmriflows/tree/master)
 [![GitHub issues](https://img.shields.io/github/issues/miykael/fmriflows.svg)](https://github.com/miykael/fmriflows/issues/)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/miykael/fmriflows.svg)](https://github.com/miykael/fmriflows/pulls/)
 [![GitHub contributors](https://img.shields.io/github/contributors/miykael/fmriflows.svg)](https://GitHub.com/miykael/fmriflows/graphs/contributors/)
