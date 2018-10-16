@@ -68,7 +68,7 @@ def reduce_comp_time_anat():
                 txt = txt.replace('\'Regular\', \'Regular\', \'None\'',
                                   '\'Regular\', \'Regular\'')
                 txt = txt.replace('0.25, 0.25, 1', '0.25, 0.25')
-                txt = txt.replace('[1000, 500, 250, 100]', '')
+                txt = txt.replace('[1000, 500, 250, 100],', '')
                 txt = txt.replace('[1e-06] * 3', '[1e-06] * 2')
                 txt = txt.replace('[20, 20, 10]', '[20, 20]')
                 txt = txt.replace('[[3, 2, 1, 0]] * 3', '[[2, 1], [1, 0]]')
