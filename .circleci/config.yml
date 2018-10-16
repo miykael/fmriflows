@@ -16,12 +16,12 @@ jobs:
           name: docker build 1
           no_output_timeout: 60m
           command: |
-            docker build -t miykael/fmriflows:$CIRCLE_BRANCH .
+            docker build -t miykael/fmriflows:$(echo $CIRCLE_BRANCH | sed 's|/|_|g') .
       - run:
           name: run tests 1
           no_output_timeout: 120m
           command: |
-            docker run -it --rm miykael/fmriflows:$CIRCLE_BRANCH python /home/neuro/test_notebooks.py
+            docker run -it --rm miykael/fmriflows:$(echo $CIRCLE_BRANCH | sed 's|/|_|g') python /home/neuro/test_notebooks.py
 
 workflows:
   version: 2
