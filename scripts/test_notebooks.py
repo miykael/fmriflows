@@ -26,7 +26,7 @@ def prepare_test_data():
     os.system('cp -lR /home/neuro/notebooks/ds000114/* /data/.')
 
 
-def create_demo_JSON_specs():
+def reduce_JSON_specs():
     """
     Create JSON specification file
     """
@@ -87,8 +87,8 @@ def reduce_comp_time_anat():
             if 'Normalize anatomy to ICBM template' in cell['source']:
                 txt = cell['source']
                 txt = txt.replace('1000, 500, 250, 100', '1000, 500')
-                txt = txt.replace('3, 2, 1, 0', '3, 2')
-                txt = txt.replace('8, 4', '8, 4')
+                txt = txt.replace('3, 2, 1, 0', '2, 1')
+                txt = txt.replace('8, 4, 2, 1', '2, 1')
                 cell['source'] = txt
 
     # Overwrite notebook with new changes
@@ -101,7 +101,7 @@ if __name__ == '__main__':
 
     test_version()
     prepare_test_data()
-    create_demo_JSON_specs()
+    reduce_JSON_specs()
     reduce_comp_time_anat()
 
     # Notebooks that should be tested
