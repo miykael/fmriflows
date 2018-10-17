@@ -1,9 +1,0 @@
-{
-    "subject_list": [
-        "01",
-        "02"
-    ],
-    "T1_id": "T1w",
-    "vox_res": [1, 1, 1],
-    "n_parallel_jobs": 4
-}
