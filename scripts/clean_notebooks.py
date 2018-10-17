@@ -1,4 +1,5 @@
 import nbformat
+from glob import glob
 
 # This script should be run before committing changes in the notebooks,
 # as it resets cell counts and deletes cell outputs.
@@ -33,10 +34,7 @@ def write_nb(nb_node, nb_filename):
 
 if __name__ == '__main__':
 
-    for nb in [
-            'notebooks/01_preproc_anat.ipynb',
-            'notebooks/02_preproc_func.ipynb'
-    ]:
+    for nb in glob('notebooks/??_*.ipynb'):
 
         # Read Notebook
         nb_content = read_nb(nb)
