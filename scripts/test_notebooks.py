@@ -39,18 +39,10 @@ def reduce_JSON_specs():
     # Rewrite ANTs' registration command
     for cell in nb_node['cells']:
         if 'code' == cell['cell_type']:
-            if ' = subject_list' in cell['source']:
+
+            if 'func_files = layout.get(' in cell['source']:
                 txt = cell['source']
-                txt = txt.replace('= subject_list', '= subject_list[:2]')
-                cell['source'] = txt
-            elif 'func_files = layout.get(' in cell['source']:
-                txt = cell['source']
-                txt = txt.replace('task_id[0])',
-                                  'task_id[1], session=\'test\')[:2]')
-                cell['source'] = txt
-            elif ' = session_list' in cell['source']:
-                txt = cell['source']
-                txt = txt.replace('= session_list', '= [session_list[1]]')
+                txt = txt.replace('task_id[0])', 'task_id[1])')
                 cell['source'] = txt
             elif 'Voxel resolution of reference template' in cell['source']:
                 txt = cell['source']
@@ -59,10 +51,6 @@ def reduce_JSON_specs():
             elif 'Should ANTs Normalization be done in' in cell['source']:
                 txt = cell['source']
                 txt = txt.replace(' = 3', ' = 2')
-                cell['source'] = txt
-            elif ' = task_id' in cell['source']:
-                txt = cell['source']
-                txt = txt.replace('= task_id', '= [task_id[1]]')
                 cell['source'] = txt
 
     # Overwrite notebook with new changes
