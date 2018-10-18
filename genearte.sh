@@ -45,6 +45,7 @@ generate_docker() {
                   && /usr/bin/fsl5.0-fslmaths 1.0mm_T1.nii.gz -mul 1.0mm_mask.nii.gz 1.0mm_brain.nii.gz' \
            --copy notebooks "/home/neuro/notebooks" \
            --copy scripts/test_notebooks.py "/home/neuro/test_notebooks.py" \
+           --copy notebooks/templates "/reports" \
            --run 'chown -R neuro /home/neuro' \
            --run 'chown -R neuro /templates' \
            --run 'chown -R neuro /data' \
@@ -98,6 +99,7 @@ generate_singularity() {
                   && /usr/bin/fsl5.0-fslmaths 1.0mm_T1.nii.gz -mul 1.0mm_mask.nii.gz 1.0mm_brain.nii.gz' \
            --copy notebooks "/home/neuro/notebooks" \
            --copy scripts/test_notebooks.py "/home/neuro/test_notebooks.py" \
+           --copy notebooks/templates "/reports" \
            --run 'chown -R neuro /home/neuro' \
            --run 'chown -R neuro /templates' \
            --run 'chown -R neuro /data' \
