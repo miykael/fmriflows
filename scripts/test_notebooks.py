@@ -26,6 +26,30 @@ def prepare_test_data():
     os.system('cp -lR /home/neuro/notebooks/ds000114/* /data/.')
 
 
+def reduce_JSON_specs():
+    """
+    Create JSON specification file
+    """
+    nb_path = '/home/neuro/notebooks/00_spec_preparation.ipynb'
+     # Load notebook
+    with open(nb_path, 'rb') as nb_file:
+        nb_node = nbformat.reads(nb_file.read(), nbformat.NO_CONVERT)
+     # Rewrite ANTs' registration command
+    for cell in nb_node['cells']:
+        if 'code' == cell['cell_type']:
+             if 'func_files = layout.get(' in cell['source']:
+                txt = cell['source']
+                txt = txt.replace('task_id[0])', 'task_id[1])')
+                cell['source'] = txt
+            elif 'Voxel resolution of reference template' in cell['source']:
+                txt = cell['source']
+                txt = txt.replace('[1.0, 1.0, 1.0]', '[4.0, 4.0, 4.0]')
+                cell['source'] = txt
+     # Overwrite notebook with new changes
+    nbformat.write(nb_node, nb_path)
+     print('JSON specification file creation adapted to demo dataset.')
+
+
 def reduce_comp_time_anat():
     """
     Change ANTs' normalization command to reduce computation time on CircleCi.
@@ -60,6 +84,7 @@ if __name__ == '__main__':
     test_version()
     prepare_test_data()
     reduce_comp_time_anat()
+    reduce_JSON_specs()
 
     # Notebooks that should be tested
     notebooks = [
