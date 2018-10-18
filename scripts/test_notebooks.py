@@ -41,7 +41,8 @@ def reduce_JSON_specs():
         if 'code' == cell['cell_type']:
             if 'func_files = layout.get(' in cell['source']:
                 txt = cell['source']
-                txt = txt.replace('task_id[0])', 'task_id[1])')
+                txt = txt.replace('task_id[0])',
+                                  'task_id[1], session=session_list[1])[:2]')
                 cell['source'] = txt
             elif 'Voxel resolution of reference template' in cell['source']:
                 txt = cell['source']
