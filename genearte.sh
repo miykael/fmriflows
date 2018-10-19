@@ -22,7 +22,7 @@ generate_docker() {
              pip_install="https://github.com/nipy/nipype/tarball/master
                           https://github.com/INCF/pybids/tarball/0.6.5
                           https://github.com/miykael/atlasreader/tarball/master
-                          nibabel nilearn pymvpa2 datalad[full] nipy duecredit nbval" \
+                          nibabel nilearn nitime pymvpa2 datalad[full] nipy duecredit nbval" \
              create_env="neuro" \
              activate=True \
            --user=root \
@@ -76,7 +76,7 @@ generate_singularity() {
              pip_install="https://github.com/nipy/nipype/tarball/master
                           https://github.com/INCF/pybids/tarball/0.6.5
                           https://github.com/miykael/atlasreader/tarball/master
-                          nibabel nilearn pymvpa2 datalad[full] nipy duecredit nbval" \
+                          nibabel nilearn nitime pymvpa2 datalad[full] nipy duecredit nbval" \
              create_env="neuro" \
              activate=True \
            --user=root \
