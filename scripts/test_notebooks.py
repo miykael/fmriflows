@@ -9,12 +9,12 @@ def test_version():
 
 def prepare_test_data():
 
-    print('Install test dataset ds000114.')
-    os.system('datalad install ///workshops/nih-2017/ds000114')
+    print('Install test dataset ds000114 in user\'s home folder.')
+    os.system('datalad -C /home/neuro install ///workshops/nih-2017/ds000114')
 
     print('Download required data.')
     task = 'fingerfootlips'
-    cmd = 'datalad get -J 4 '
+    cmd = 'datalad -C /home/neuro get -J 4 '
     for i in [1, 2]:
         cmd += 'ds000114/sub-%02d/ses-test/anat/' % i
         cmd += 'sub-%02d_ses-test_T1w.nii.gz ' % i
@@ -23,7 +23,7 @@ def prepare_test_data():
     os.system(cmd)
 
     print('Move test data to data folder.')
-    os.system('cp -lR /home/neuro/notebooks/ds000114/* /data/.')
+    os.system('cp -lR /home/neuro/ds000114/* /data/.')
 
 
 def reduce_JSON_specs():
@@ -42,7 +42,7 @@ def reduce_JSON_specs():
             if 'func_files = layout.get(' in cell['source']:
                 txt = cell['source']
                 txt = txt.replace('task_id[0])',
-                                  'task_id[1], session=session_list[1])[:2]')
+                                  'task_id[1], session=session_list)')
                 cell['source'] = txt
             elif 'Voxel resolution of reference template' in cell['source']:
                 txt = cell['source']
