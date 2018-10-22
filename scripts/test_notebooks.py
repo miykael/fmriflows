@@ -39,10 +39,15 @@ def reduce_JSON_specs():
     # Rewrite ANTs' registration command
     for cell in nb_node['cells']:
         if 'code' == cell['cell_type']:
-            if 'func_files = layout.get(' in cell['source']:
+            if 'task_id = layout.get_tasks()' in cell['source']:
+                txt = cell['source']
+                txt = txt.replace('layout.get_tasks()',
+                                  '[layout.get_tasks()[1]]')
+                cell['source'] = txt
+            elif 'func_files = layout.get(' in cell['source']:
                 txt = cell['source']
                 txt = txt.replace('task_id[0])',
-                                  'task_id[1], session=session_list)')
+                                  'task_id[0], session=session_list)')
                 cell['source'] = txt
             elif 'Voxel resolution of reference template' in cell['source']:
                 txt = cell['source']
