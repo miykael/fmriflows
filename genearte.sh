@@ -13,7 +13,7 @@ generate_docker() {
                 git-annex-standalone git-annex-remote-rclone \
                 afni ants fsl-core \
       --add-to-entrypoint "source /etc/fsl/fsl.sh" \
-      --run "export PATH=/usr/lib/afni/bin:$PATH" \
+      --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
       --user=neuro \
       --miniconda version="latest" \
         conda_install="python=3.6 ipython pytest jupyter jupyterlab jupyter_contrib_nbextensions
@@ -67,7 +67,7 @@ generate_singularity() {
                 git-annex-standalone git-annex-remote-rclone \
                 afni ants fsl-core \
       --add-to-entrypoint "source /etc/fsl/fsl.sh" \
-      --run "export PATH=/usr/lib/afni/bin:$PATH" \
+      --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
       --user=neuro \
       --miniconda version="latest" \
         conda_install="python=3.6 ipython pytest jupyter jupyterlab jupyter_contrib_nbextensions
