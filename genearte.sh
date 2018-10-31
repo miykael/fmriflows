@@ -14,6 +14,7 @@ generate_docker() {
                 afni ants fsl-core \
       --add-to-entrypoint "source /etc/fsl/fsl.sh" \
       --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
+      --add-to-entrypoint 'export PATH=/usr/lib/ants:$PATH' \
       --user=neuro \
       --miniconda version="latest" \
         conda_install="python=3.6 ipython pytest jupyter jupyterlab jupyter_contrib_nbextensions
