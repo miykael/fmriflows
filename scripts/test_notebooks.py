@@ -16,10 +16,10 @@ def prepare_test_data():
     task = 'fingerfootlips'
     cmd = 'datalad -C /home/neuro get -J 4 '
     for i in [1, 2]:
-        cmd += 'ds000114/sub-%02d/ses-test/anat/' % i
-        cmd += 'sub-%02d_ses-test_T1w.nii.gz ' % i
-        cmd += 'ds000114/sub-%02d/ses-test/func/' % i
-        cmd += 'sub-%02d_ses-test_task-%s_bold.nii.gz ' % (i, task)
+        cmd += 'ds000114/sub-%02d/ses-*/anat/' % i
+        cmd += 'sub-%02d_ses-*_T1w.nii.gz ' % i
+        cmd += 'ds000114/sub-%02d/ses-*/func/' % i
+        cmd += 'sub-%02d_ses-*_task-%s_bold.nii.gz ' % (i, task)
     os.system(cmd)
 
     print('Move test data to data folder.')
