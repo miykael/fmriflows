@@ -57,9 +57,9 @@ def reduce_JSON_specs():
                 txt = cell['source']
                 txt = txt.replace('precise', 'fast')
                 cell['source'] = txt
-            elif 'List of session identifiers' in cell['source']:
+            elif 'session_list = layout.get_sessions()' in cell['source']:
                 txt = cell['source']
-                txt = txt.replace(' = session_list', ' = [\'test\']')
+                txt = txt.replace(' = layout.get_sessions()', ' = [\'test\']')
                 cell['source'] = txt
 
     # Overwrite notebook with new changes
