@@ -7,7 +7,9 @@
 [![Docker Hub](https://img.shields.io/docker/pulls/miykael/fmriflows.svg?maxAge=2592000)](https://hub.docker.com/r/miykael/fmriflows/)
 [![GitHub HitCount](http://hits.dwyl.io/miykael/fmriflows.svg)](http://hits.dwyl.io/miykael/fmriflows)
 
-<img src="notebooks/templates/logo_fmriflows.png" width="300px"  class="center">
+# fmriflows
+
+<img src="notebooks/templates/logo_fmriflows.png" width="400px" align="right">
 
 **`fmriflows`** is a collection of fully autonomous uni- & multivariate fMRI processing pipelines. This comprises anatomical and functional preprocessing, estimation of singal confounds, as well as univariate and multivariate analysis on the subject and group level.
 
@@ -38,8 +40,7 @@ to login with a token:
 
 Remove the hash-number of the beginning of the URL and change the `:8888` to the port number that you set above. For example, if you used the flag `-p 9898:8888`, you're URL will be `http://127.0.0.1:9898/?token=0460d35a43550ca79f0286f03c54b2ca81ed678187a2343d`. Copy past this URL into your webbrowser and you will see the notebooks to run `fmriflows`.
 
-
-# Using your native environment
+## Using your native environment
 
 It is also possible to run `fmriflows` outside of a container. All the important code is stored within the [notebooks](https://github.com/miykael/fmriflows/tree/master/notebooks). But for this, you need to make sure that all necessairy neuroimaging and python dependencies are installed on your system. For a list of what needs to be done, see the [generating](https://github.com/miykael/fmriflows/blob/master/genearte.sh) file.
 
@@ -71,17 +72,17 @@ After anatomical preprocessing the following output figures are generated:
 ### Tissue Segmentation of T1w
 This panel shows quality of the T1-weighted image segmentation, with brain tissues highlighted in green for Gray Matter (GM), in beige for White Matter (WM) and in blue for Cerebral Spinal Fluid (CSF).
 
-<img src="static/outputs/preproc_anat_brain.png" width="600px"  class="center">
+<img src="static/outputs/preproc_anat_brain.png" width="800px"  class="center">
 
 ### Brain Extraction of T1w
 This panel shows the quality of the brain extraction. The brain highlighted in red is overlayed on the subject specific T1-weighted image in gray.
 
-<img src="static/outputs/preproc_anat_segmentation.png" width="600px"  class="center">
+<img src="static/outputs/preproc_anat_segmentation.png" width="800px"  class="center">
 
 ### T1w to MNI registration
 This panel shows the quality of the nonlinear template registration. The normalized brain highlighted in yellow is overlayed on the ICBM T1-weighted template image in gray. Regions in red and blue show negative and positive deformation discrepancy between the normalized subject image and the template.
 
-<img src="static/outputs/preproc_anat_normalized.png" width="600px"  class="center">
+<img src="static/outputs/preproc_anat_normalized.png" width="800px"  class="center">
 
 ## 02_preproc_func.ipynb
 
@@ -115,41 +116,41 @@ After functional preprocessing the following output figures are generated:
 ### Mean Image and CompCor Masks
 This panel shows the mean functional image in gray, and the brainmask (red) that was used to compute DVARS and the temporal (green) and anatomical (yellow) CompCor mask.
 
-<img src="static/outputs/preproc_func_overlays.png" width="600px"  class="center">
+<img src="static/outputs/preproc_func_overlays.png" width="800px"  class="center">
 
 ### Carpet plot of the temporal filtered functional image
 This panel shows the signal for (almost) every voxel (y-axis), over time in volumes (x-axis). The panel shows voxel in the gray matter (top part), white matter (between blue and red line) and CSF (bottom section). The data was standardized to the global signal, and ordered within a given region according to correlation coefficient to the average signal.
 
-<img src="static/outputs/preproc_func_carpet.png" width="600px"  class="center">
+<img src="static/outputs/preproc_func_carpet.png" width="800px"  class="center">
 
 ### Main confounds with highlighted outliers
 This panel shows the main confounds. Shown are FD (Framewise Displacement) and DVARS, as well as the average signal in TV (total brain volume), GM (gray matter), WM (white matter) and CSF (cerebral spinal fluid). Vertical lines in black indicate outliers, as defined by threshold values.
 
-<img src="static/outputs/preproc_func_confounds_main.png" width="600px"  class="center">
+<img src="static/outputs/preproc_func_confounds_main.png" width="800px"  class="center">
 
 ### Motion Parameters
 This panel shows the motion parameters.
 
-<img src="static/outputs/preproc_func_confounds_motion.png" width="600px"  class="center">
+<img src="static/outputs/preproc_func_confounds_motion.png" width="800px"  class="center">
 
 ### Anatomical CompCor Components
 This panel shows the anatomical CompCor components.
 
-<img src="static/outputs/preproc_func_confounds_compA.png" width="600px"  class="center">
+<img src="static/outputs/preproc_func_confounds_compA.png" width="800px"  class="center">
 
 ### Temporal CompCor Components
 This panel shows the temporal CompCor components.
 
-<img src="static/outputs/preproc_func_confounds_compT.png" width="600px"  class="center">
+<img src="static/outputs/preproc_func_confounds_compT.png" width="800px"  class="center">
 
 ### ICA Components
 This panel shows the ICA components. Left side of the figure shows the correlation between the component and the functional image, over time. The right panel shows the power spectrum density of this component, with values in Hz on the x-axis.
 
-<img src="static/outputs/preproc_func_ICA_comp_signal.png" width="600px"  class="center">
+<img src="static/outputs/preproc_func_ICA_comp_signal.png" width="800px"  class="center">
 
 This panel shows the load of the ICA components within the brain volume.
 
-<img src="static/outputs/preproc_func_ICA_comp_brain.png" width="600px"  class="center">
+<img src="static/outputs/preproc_func_ICA_comp_brain.png" width="800px"  class="center">
 
 # Feedback, Help & Support
 
