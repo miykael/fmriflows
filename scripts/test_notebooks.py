@@ -57,6 +57,10 @@ def reduce_JSON_specs():
                 txt = cell['source']
                 txt = txt.replace('precise', 'fast')
                 cell['source'] = txt
+            elif 'List of session identifiers' in cell['source']:
+                txt = cell['source']
+                txt = txt.replace(' = session_list', ' = [\'test\']')
+                cell['source'] = txt
 
     # Overwrite notebook with new changes
     nbformat.write(nb_node, nb_path)
