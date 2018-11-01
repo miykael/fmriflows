@@ -1,0 +1,87 @@
+digraph preproc_func{
+  subgraph cluster_preproc_func {
+      edge [color="#0000FF"];
+      style=filled;
+      fillcolor="#B4B4FF";
+      label="Functional Preprocessing";
+    slice_time[label="Slice Time Correction (SPM)", style=filled, fillcolor="#E6E6FF"];
+    get_Param[label="Collect Analysis Parameters (Python)", shape=box3d,style=filled, color=black, colorscheme=greys7 fillcolor=2];
+    subgraph cluster_prepareflow {
+            edge [color="#FF0000"];
+            style=filled;
+            fillcolor="#FFB4B4";
+            label="Prepare Workflow";
+        prepareflow_reorient[label="Reorient Image (Nipye)", style=filled, fillcolor="#FFE6E6"];
+        prepareflow_nss_detection[label="Non-steady-state detection (Nipype)", style=filled, fillcolor="#FFE6E6"];
+        prepareflow_nss_removal[label="Nss removal (FSL)", style=filled, fillcolor="#FFE6E6"];
+        prepareflow_brain_extraction[label="Extract brain from functional Image (Nilearn)", style=filled, fillcolor="#FFE6E6"];
+        prepareflow_write_nss[label="Write nss to File (Python)", style=filled, fillcolor="#FFE6E6"];
+        prepareflow_reorient -> prepareflow_nss_detection;
+        prepareflow_reorient -> prepareflow_nss_removal;
+        prepareflow_reorient -> prepareflow_write_nss;
+        prepareflow_nss_detection -> prepareflow_write_nss;
+        prepareflow_nss_detection -> prepareflow_nss_removal;
+        prepareflow_nss_removal -> prepareflow_brain_extraction;
+    }
+    subgraph cluster_mcflow {
+            edge [color="#FF0000"];
+            style=filled;
+            fillcolor="#FFB4B4";
+            label="Motion Correction Workflow";
+        mcflow_split_func[label="Split functional Image (FSL)", style=filled, fillcolor="#FFE6E6"];
+        mcflow_apply_low_pass[label="Apply lowpass filter to functional image (AFNI)", style=filled, fillcolor="#FFE6E6"];
+        mcflow_add_mean_to_bandpass[label="Add mean to filtered data (Nilearn)", style=filled, fillcolor="#FFE6E6"];
+        mcflow_mcflirt_estimation[label="Estimate motion parameters (FSL)", style=filled, fillcolor="#FFE6E6"];
+        mcflow_lowpass_mc[label="Lowpass motion parameters (Nipype)", style=filled, fillcolor="#FFE6E6"];
+        mcflow_motion_correction[label="Motion correct images (FSL)", style=filled, fillcolor="#FFE6E6"];
+        mcflow_merge_and_mean[label="Merge images and add mean (Nilearn)", style=filled, fillcolor="#FFE6E6"];
+        mcflow_split_func -> mcflow_motion_correction;
+        mcflow_apply_low_pass -> mcflow_add_mean_to_bandpass;
+        mcflow_add_mean_to_bandpass -> mcflow_mcflirt_estimation;
+        mcflow_mcflirt_estimation -> mcflow_motion_correction;
+        mcflow_mcflirt_estimation -> mcflow_lowpass_mc;
+        mcflow_motion_correction -> mcflow_merge_and_mean;
+    }
+    subgraph cluster_coregflow {
+            edge [color="#FF0000"];
+            style=filled;
+            fillcolor="#FFB4B4";
+            label="Coregistration Workflow";
+        coregflow_coreg_pre[label="Initial Coregistration (FSL)", style=filled, fillcolor="#FFE6E6"];
+        coregflow_coreg_bbr[label="White Matter Boundary-Based Registration (FSL)", style=filled, fillcolor="#FFE6E6"];
+        coregflow_apply_coreg[label="Apply coregistration (FSL)", style=filled, fillcolor="#FFE6E6"];
+        coregflow_coreg_pre -> coregflow_coreg_bbr;
+        coregflow_coreg_bbr -> coregflow_apply_coreg;
+    }
+    subgraph cluster_filterflow {
+            edge [color="#FF0000"];
+            style=filled;
+            fillcolor="#FFB4B4";
+            label="Filter Workflow";
+        filterflow_filter_preparation[label="Filter preparation (Nilearn)", style=filled, fillcolor="#FFE6E6"];
+        filterflow_temporal_filter[label="Temporal Filter (AFNI)", style=filled, fillcolor="#FFE6E6"];
+        filterflow_add_mean_to_filt[label="Add mean to filtered file (Nilearn)", style=filled, fillcolor="#FFE6E6"];
+        filterflow_spatial_filter[label="Spatial Filter (Nilearn)", shape=box3d,style=filled, color=black, colorscheme=greys7 fillcolor=2];
+        filterflow_filter_preparation -> filterflow_temporal_filter;
+        filterflow_filter_preparation -> filterflow_add_mean_to_filt;
+        filterflow_temporal_filter -> filterflow_add_mean_to_filt;
+        filterflow_add_mean_to_filt -> filterflow_spatial_filter;
+    }
+    prepareflow_brain_extraction -> mcflow_split_func;
+    prepareflow_brain_extraction -> mcflow_apply_low_pass;
+    prepareflow_brain_extraction -> mcflow_merge_and_mean;
+    prepareflow_brain_extraction -> mcflow_add_mean_to_bandpass;
+    prepareflow_brain_extraction -> mcflow_lowpass_mc;
+    mcflow_merge_and_mean -> slice_time;
+    mcflow_merge_and_mean -> coregflow_coreg_pre;
+    mcflow_merge_and_mean -> coregflow_coreg_bbr;
+    slice_time -> coregflow_apply_coreg;
+    coregflow_apply_coreg -> filterflow_filter_preparation;
+    get_Param -> mcflow_apply_low_pass;
+    get_Param -> mcflow_lowpass_mc;
+    get_Param -> slice_time;
+    get_Param -> filterflow_filter_preparation;
+    get_Param -> filterflow_temporal_filter;
+    get_Param -> prepareflow_brain_extraction;
+  }
+}
