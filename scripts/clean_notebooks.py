@@ -6,8 +6,7 @@ from glob import glob
 
 
 def read_nb(nb_filename):
-    """Reads notebooks"""
-
+    """Read notebooks."""
     with open(nb_filename, 'rb') as nb_file:
         txt = nb_file.read()
 
@@ -15,8 +14,7 @@ def read_nb(nb_filename):
 
 
 def clean_cells(nb_node):
-    """Deletes any outputs and resets cell count"""
-
+    """Delete any outputs and resets cell count."""
     for cell in nb_node['cells']:
         if 'code' == cell['cell_type']:
             if 'outputs' in cell:
@@ -28,7 +26,7 @@ def clean_cells(nb_node):
 
 
 def write_nb(nb_node, nb_filename):
-    """Rewrites notebook"""
+    """Rewrites notebook."""
     nbformat.write(nb_node, nb_filename)
 
 
