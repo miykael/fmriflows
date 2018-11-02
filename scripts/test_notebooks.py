@@ -16,10 +16,10 @@ def prepare_test_data():
     task = 'fingerfootlips'
     cmd = 'datalad -C /home/neuro get -J 4 '
     for i in [1, 2]:
-        cmd += 'ds000114/sub-%02d/ses-*/anat/' % i
-        cmd += 'sub-%02d_ses-*_T1w.nii.gz ' % i
-        cmd += 'ds000114/sub-%02d/ses-*/func/' % i
-        cmd += 'sub-%02d_ses-*_task-%s_bold.nii.gz ' % (i, task)
+        cmd += 'ds000114/sub-%02d/ses-test/anat/' % i
+        cmd += 'sub-%02d_ses-test_T1w.nii.gz ' % i
+        cmd += 'ds000114/sub-%02d/ses-test/func/' % i
+        cmd += 'sub-%02d_ses-test_task-%s_bold.nii.gz ' % (i, task)
     os.system(cmd)
 
     print('Move test data to data folder.')
@@ -44,11 +44,6 @@ def reduce_JSON_specs():
                 txt = txt.replace('layout.get_tasks()',
                                   '[layout.get_tasks()[1]]')
                 cell['source'] = txt
-            elif 'func_files = layout.get(' in cell['source']:
-                txt = cell['source']
-                txt = txt.replace('task_id[0])',
-                                  'task_id[0], session=session_list)')
-                cell['source'] = txt
             elif 'Voxel resolution of reference template' in cell['source']:
                 txt = cell['source']
                 txt = txt.replace('[1.0, 1.0, 1.0]', '[4.0, 4.0, 4.0]')
@@ -56,10 +51,6 @@ def reduce_JSON_specs():
             elif 'Should ANTs Normalization a \'fast\'' in cell['source']:
                 txt = cell['source']
                 txt = txt.replace('precise', 'fast')
-                cell['source'] = txt
-            elif 'session_list = layout.get_sessions()' in cell['source']:
-                txt = cell['source']
-                txt = txt.replace(' = layout.get_sessions()', ' = [\'test\']')
                 cell['source'] = txt
 
     # Overwrite notebook with new changes
