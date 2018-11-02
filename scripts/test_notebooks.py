@@ -8,7 +8,7 @@ def test_version():
 
 
 def prepare_test_data():
-
+    """Prepare test data."""
     print('Install test dataset ds000114 in user\'s home folder.')
     os.system('datalad -C /home/neuro install ///workshops/nih-2017/ds000114')
 
@@ -27,9 +27,7 @@ def prepare_test_data():
 
 
 def reduce_JSON_specs():
-    """
-    Create JSON specification file
-    """
+    """Create JSON specification file."""
     nb_path = '/home/neuro/notebooks/00_spec_preparation.ipynb'
 
     # Load notebook
@@ -59,9 +57,7 @@ def reduce_JSON_specs():
 
 
 def reduce_comp_time_anat():
-    """
-    Change ANTs' normalization command to reduce computation time on CircleCi.
-    """
+    """Change ANTs' normalization command to reduce comp. time on CircleCi."""
     nb_path = '/home/neuro/notebooks/01_preproc_anat.ipynb'
 
     # Load notebook
