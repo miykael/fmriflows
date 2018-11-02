@@ -42,7 +42,7 @@ Remove the hash-number of the beginning of the URL and change the `:8888` to the
 
 ## Using your native environment
 
-It is also possible to run `fmriflows` outside of a container. All the important code is stored within the [notebooks](https://github.com/miykael/fmriflows/tree/master/notebooks). But for this, you need to make sure that all necessairy neuroimaging and python dependencies are installed on your system. For a list of what needs to be done, see the [generating](https://github.com/miykael/fmriflows/blob/master/genearte.sh) file.
+It is also possible to run `fmriflows` outside of a container. All the important code is stored within the [notebooks](https://github.com/miykael/fmriflows/tree/master/notebooks). But for this, you need to make sure that all necessairy neuroimaging and python dependencies are installed on your system. For a list of what needs to be done, see the [generating](https://github.com/miykael/fmriflows/blob/master/generate.sh) file.
 
 
 # `fmriflows` pipelines
