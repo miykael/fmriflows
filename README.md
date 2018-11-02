@@ -42,7 +42,7 @@ Remove the hash-number of the beginning of the URL and change the `:8888` to the
 
 ## Using your native environment
 
-It is also possible to run `fmriflows` outside of a container. All the important code is stored within the [notebooks](https://github.com/miykael/fmriflows/tree/master/notebooks). But for this, you need to make sure that all necessairy neuroimaging and python dependencies are installed on your system. For a list of what needs to be done, see the [generating](https://github.com/miykael/fmriflows/blob/master/genearte.sh) file.
+It is also possible to run `fmriflows` outside of a container. All the important code is stored within the [notebooks](https://github.com/miykael/fmriflows/tree/master/notebooks). But for this, you need to make sure that all necessary neuroimaging and python dependencies are installed on your system. For a list of what needs to be done, see the [generating](https://github.com/miykael/fmriflows/blob/master/genearte.sh) file.
 
 
 # `fmriflows` pipelines
@@ -105,7 +105,7 @@ The simplified workflow of the anatomical preprocessing looks as follows:
 <img src="static/preproc_func.png" width="800px"  class="center">
 
 Additionally to the preprocessing, the following signal confounds are computed:
- - Friston's 24-paramter model for motion parameters
+ - Friston's 24-parameter model for motion parameters
  - Framewise Displacement (FD) and DVARS
  - Average signal in total volume (TV), in GM, in WM and in CSF
  - Anatomical and temporal CompCor components
