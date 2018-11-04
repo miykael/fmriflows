@@ -28,19 +28,15 @@ digraph preproc_func{
             style=filled;
             fillcolor="#FFB4B4";
             label="Motion Correction Workflow";
-        mcflow_split_func[label="Split functional Image (FSL)", style=filled, fillcolor="#FFE6E6"];
         mcflow_apply_low_pass[label="Apply lowpass filter to functional image (AFNI)", style=filled, fillcolor="#FFE6E6"];
         mcflow_add_mean_to_bandpass[label="Add mean to filtered data (Nilearn)", style=filled, fillcolor="#FFE6E6"];
         mcflow_mcflirt_estimation[label="Estimate motion parameters (FSL)", style=filled, fillcolor="#FFE6E6"];
         mcflow_lowpass_mc[label="Lowpass motion parameters (Nipype)", style=filled, fillcolor="#FFE6E6"];
         mcflow_motion_correction[label="Motion correct images (FSL)", style=filled, fillcolor="#FFE6E6"];
-        mcflow_merge_and_mean[label="Merge images and add mean (Nilearn)", style=filled, fillcolor="#FFE6E6"];
-        mcflow_split_func -> mcflow_motion_correction;
         mcflow_apply_low_pass -> mcflow_add_mean_to_bandpass;
         mcflow_add_mean_to_bandpass -> mcflow_mcflirt_estimation;
         mcflow_mcflirt_estimation -> mcflow_motion_correction;
         mcflow_mcflirt_estimation -> mcflow_lowpass_mc;
-        mcflow_motion_correction -> mcflow_merge_and_mean;
     }
     subgraph cluster_coregflow {
             edge [color="#FF0000"];
@@ -67,14 +63,13 @@ digraph preproc_func{
         filterflow_temporal_filter -> filterflow_add_mean_to_filt;
         filterflow_add_mean_to_filt -> filterflow_spatial_filter;
     }
-    prepareflow_brain_extraction -> mcflow_split_func;
+    prepareflow_brain_extraction -> mcflow_motion_correction;
     prepareflow_brain_extraction -> mcflow_apply_low_pass;
-    prepareflow_brain_extraction -> mcflow_merge_and_mean;
     prepareflow_brain_extraction -> mcflow_add_mean_to_bandpass;
     prepareflow_brain_extraction -> mcflow_lowpass_mc;
-    mcflow_merge_and_mean -> slice_time;
-    mcflow_merge_and_mean -> coregflow_coreg_pre;
-    mcflow_merge_and_mean -> coregflow_coreg_bbr;
+    mcflow_motion_correction -> slice_time;
+    mcflow_motion_correction -> coregflow_coreg_pre;
+    mcflow_motion_correction -> coregflow_coreg_bbr;
     slice_time -> coregflow_apply_coreg;
     coregflow_apply_coreg -> filterflow_filter_preparation;
     get_Param -> mcflow_apply_low_pass;
