@@ -50,6 +50,10 @@ def reduce_JSON_specs():
                 txt = cell['source']
                 txt = txt.replace('precise', 'fast')
                 cell['source'] = txt
+            elif 'Collect unique condition names' in cell['source']:
+                txt = cell['source']
+                txt = txt.replace('df[\'condition\']', 'df[\'trial_type\']')
+                cell['source'] = txt
 
     # Overwrite notebook with new changes
     nbformat.write(nb_node, nb_path)
