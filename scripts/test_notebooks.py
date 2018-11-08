@@ -100,6 +100,7 @@ if __name__ == '__main__':
         '/home/neuro/notebooks/01_preproc_anat.ipynb',
         '/home/neuro/notebooks/02_preproc_func.ipynb',
         '/home/neuro/notebooks/03_analysis_1st-level.ipynb',
+    ]
 
     for test in notebooks:
         pytest_cmd = 'pytest --nbval-lax --nbval-cell-timeout 7200 -v -s '
