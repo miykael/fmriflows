@@ -87,12 +87,38 @@ def reduce_comp_time_anat():
     print('ANTs Registration simplified.')
 
 
+def rename_condition_1stlevel_notebook():
+    """Changes condition identifier in dataset to trial_type."""
+    nb_path = '/home/neuro/notebooks/03_analysis_1st-level.ipynb'
+
+    # Load notebook
+    with open(nb_path, 'rb') as nb_file:
+        nb_node = nbformat.reads(nb_file.read(), nbformat.NO_CONVERT)
+
+    # Rewrite ANTs' registration command
+    for cell in nb_node['cells']:
+        if 'code' == cell['cell_type']:
+            if 'Specify 1st-level model parameters' in cell['source']:
+                txt = cell['source']
+                txt = txt.replace('trialinfo.condition',
+                                  'trialinfo.trial_type')
+                txt = txt.replace('groupby(\'condition\')',
+                                  'groupby(\'trial_type\'')
+                cell['source'] = txt
+
+    # Overwrite notebook with new changes
+    nbformat.write(nb_node, nb_path)
+
+    print('1st-level condition renamed.')
+
+
 if __name__ == '__main__':
 
     test_version()
     prepare_test_data()
     reduce_comp_time_anat()
     reduce_JSON_specs()
+    rename_condition_1stlevel_notebook()
 
     # Notebooks that should be tested
     notebooks = [
