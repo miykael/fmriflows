@@ -50,6 +50,10 @@ def reduce_JSON_specs():
                 txt = cell['source']
                 txt = txt.replace('precise', 'fast')
                 cell['source'] = txt
+            elif 'Collect unique condition names' in cell['source']:
+                txt = cell['source']
+                txt = txt.replace('df[\'condition\']', 'df[\'trial_type\']')
+                cell['source'] = txt
 
     # Overwrite notebook with new changes
     nbformat.write(nb_node, nb_path)
@@ -95,6 +99,7 @@ if __name__ == '__main__':
         '/home/neuro/notebooks/00_spec_preparation.ipynb',
         '/home/neuro/notebooks/01_preproc_anat.ipynb',
         '/home/neuro/notebooks/02_preproc_func.ipynb',
+        '/home/neuro/notebooks/03_analysis_1st-level.ipynb',
     ]
 
     for test in notebooks:
