@@ -24,7 +24,7 @@ generate_docker() {
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      https://github.com/nipy/nipype/tarball/master
                      https://github.com/INCF/pybids/tarball/0.6.5
-                     datalad[full] nbval nibabel nilearn nitime" \
+                     datalad[full] duecredit nbval nibabel nilearn nitime" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -33,7 +33,7 @@ generate_docker() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     dask datalad[full] nbval nibabel nilearn pprocess" \
+                     dask datalad[full] duecredit nbval nibabel nilearn pprocess" \
         create_env="mvpa" \
         activate=False \
       --run-bash "source activate mvpa && cd /home/neuro  \
@@ -98,7 +98,7 @@ generate_singularity() {
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      https://github.com/nipy/nipype/tarball/master
                      https://github.com/INCF/pybids/tarball/0.6.5
-                     datalad[full] nbval nibabel nilearn nitime" \
+                     datalad[full] duecredit nbval nibabel nilearn nitime" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -107,7 +107,7 @@ generate_singularity() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     dask datalad[full] nbval nibabel nilearn pprocess" \
+                     dask datalad[full] duecredit nbval nibabel nilearn pprocess" \
         create_env="mvpa" \
         activate=False \
       --run-bash "source activate mvpa && cd /home/neuro  \
