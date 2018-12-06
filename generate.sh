@@ -23,8 +23,8 @@ generate_docker() {
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      https://github.com/nipy/nipype/tarball/master
-                     https://github.com/INCF/pybids/tarball/0.6.5
-                     datalad[full] duecredit nbval nibabel nilearn nitime" \
+                     datalad[full] duecredit nbval nibabel nilearn nitime
+                     pybids" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -33,7 +33,8 @@ generate_docker() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     dask datalad[full] duecredit nbval nibabel nilearn pprocess" \
+                     dask datalad[full] duecredit nbval nibabel nilearn
+                     pprocess pybids" \
         create_env="mvpa" \
         activate=False \
       --run-bash "source activate mvpa && cd /home/neuro  \
