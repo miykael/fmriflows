@@ -24,7 +24,7 @@ generate_docker() {
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      https://github.com/nipy/nipype/tarball/master
                      datalad[full] duecredit nbval nibabel nilearn nitime
-                     pybids" \
+                     pybids autopep8" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -34,7 +34,7 @@ generate_docker() {
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      dask datalad[full] duecredit nbval nibabel nilearn
-                     pprocess pybids" \
+                     pprocess pybids autopep8" \
         create_env="mvpa" \
         activate=False \
       --run-bash "source activate mvpa && cd /home/neuro  \
@@ -72,6 +72,8 @@ generate_docker() {
       --run 'chown -R neuro /data' \
       --run 'rm -rf /opt/conda/pkgs/*' \
       --user=neuro \
+      --run-bash "source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
+      --run-bash "source activate mvpa && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
       --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"0.0.0.0\" > ~/.jupyter/jupyter_notebook_config.py' \
       --workdir /home/neuro/notebooks \
       --cmd jupyter-notebook
@@ -98,8 +100,8 @@ generate_singularity() {
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      https://github.com/nipy/nipype/tarball/master
-                     https://github.com/INCF/pybids/tarball/0.6.5
-                     datalad[full] duecredit nbval nibabel nilearn nitime" \
+                     datalad[full] duecredit nbval nibabel nilearn nitime
+                     pybids autopep8" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -108,7 +110,8 @@ generate_singularity() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     dask datalad[full] duecredit nbval nibabel nilearn pprocess" \
+                     dask datalad[full] duecredit nbval nibabel nilearn
+                     pprocess pybids autopep8" \
         create_env="mvpa" \
         activate=False \
       --run-bash "source activate mvpa && cd /home/neuro  \
@@ -146,6 +149,8 @@ generate_singularity() {
       --run 'chown -R neuro /data' \
       --run 'rm -rf /opt/conda/pkgs/*' \
       --user=neuro \
+      --run-bash "source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
+      --run-bash "source activate mvpa && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
       --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"0.0.0.0\" > ~/.jupyter/jupyter_notebook_config.py' \
       --workdir /home/neuro/notebooks
 }
