@@ -101,6 +101,7 @@ if __name__ == '__main__':
         '/home/neuro/notebooks/02_preproc_func.ipynb',
         '/home/neuro/notebooks/03_analysis_1st-level.ipynb',
         '/home/neuro/notebooks/04_analysis_2nd-level.ipynb',
+        '/home/neuro/notebooks/05_analysis_multivariate.ipynb',
     ]
 
     for test in notebooks:
