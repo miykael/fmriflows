@@ -23,8 +23,8 @@ generate_docker() {
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      https://github.com/nipy/nipype/tarball/master
-                     datalad[full] duecredit nbval nibabel nilearn nitime
-                     pybids autopep8" \
+                     datalad[full] duecredit nbval nibabel nilearn nistats
+                     nitime pybids autopep8" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -33,7 +33,7 @@ generate_docker() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     dask datalad[full] duecredit nbval nibabel nilearn
+                     dask datalad[full] duecredit nbval nibabel nilearn nistats
                      pprocess pybids autopep8" \
         create_env="mvpa" \
         activate=False \
@@ -100,8 +100,8 @@ generate_singularity() {
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      https://github.com/nipy/nipype/tarball/master
-                     datalad[full] duecredit nbval nibabel nilearn nitime
-                     pybids autopep8" \
+                     datalad[full] duecredit nbval nibabel nilearn nistats
+                     nitime pybids autopep8" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -110,7 +110,7 @@ generate_singularity() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     dask datalad[full] duecredit nbval nibabel nilearn
+                     dask datalad[full] duecredit nbval nibabel nilearn nistats
                      pprocess pybids autopep8" \
         create_env="mvpa" \
         activate=False \
