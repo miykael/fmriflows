@@ -151,18 +151,35 @@ if __name__ == '__main__':
     reduce_comp_time_anat()
     reduce_specs()
 
-    # Notebooks that should be tested
+    # Notebooks that should be tested in environment 'neuro'
     notebooks = [
         '/home/neuro/notebooks/00_spec_preparation.ipynb',
         '/home/neuro/notebooks/01_preproc_anat.ipynb',
         '/home/neuro/notebooks/02_preproc_func.ipynb',
         '/home/neuro/notebooks/03_analysis_1st-level.ipynb',
         '/home/neuro/notebooks/04_analysis_2nd-level.ipynb',
-        '/home/neuro/notebooks/05_analysis_multivariate.ipynb',
     ]
 
     for test in notebooks:
         pytest_cmd = 'pytest --nbval-lax --nbval-cell-timeout 7200 -v -s '
+        pytest_cmd += test
+        print(pytest_cmd)
+        os.system(pytest_cmd)
+
+    # Notebooks that should be tested in environment 'mvpa'
+    notebooks = [
+        '/home/neuro/notebooks/05_analysis_multivariate.ipynb',
+    ]
+
+    for test in notebooks:
+
+        cmd_prep = "sed -i 's/conda-env-mvpa-py/python2/g' "
+        cmd_prep += test
+        print(cmd_prep)
+        os.system(cmd_prep)
+
+        pytest_cmd = '/opt/miniconda-latest/envs/mvpa/bin/pytest '
+        pytest_cmd += '--nbval-lax -v -s '
         pytest_cmd += test
         print(pytest_cmd)
         os.system(pytest_cmd)
