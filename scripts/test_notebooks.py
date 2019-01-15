@@ -108,8 +108,8 @@ def reduce_specs():
         if 'code' == cell['cell_type']:
             if 'collects the relevant input files' in cell['source']:
                 txt = cell['source']
-                txt = txt.replace('layout.get(**search_parameters)',
-                                  'layout.get(**search_parameters) * 4')
+                txt = txt.replace('glob(template_con.format',
+                                  '4 * glob(template_con.format')
                 cell['source'] = txt
 
     # Overwrite notebook 05_analysis_multivariate with new changes
