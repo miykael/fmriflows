@@ -40,7 +40,7 @@ def reduce_specs():
             if 'task_id = layout.get_tasks()' in cell['source']:
                 txt = cell['source']
                 txt = txt.replace('layout.get_tasks()',
-                                  '[layout.get_tasks()[1]]')
+                                  '[layout.get_tasks()[-2]]')
                 cell['source'] = txt
             elif 'Voxel resolution of reference template' in cell['source']:
                 txt = cell['source']
