@@ -37,10 +37,10 @@ def reduce_specs():
     # Rewrite notebook cells
     for cell in nb_node['cells']:
         if 'code' == cell['cell_type']:
-            if 'task_id = layout.get_tasks()' in cell['source']:
+            if 'task_id = sorted(layout.get_tasks())' in cell['source']:
                 txt = cell['source']
-                txt = txt.replace('layout.get_tasks()',
-                                  '[layout.get_tasks()[-2]]')
+                txt = txt.replace('task_id = sorted(layout.get_tasks())',
+                                  'task_id = [sorted(layout.get_tasks())[1]]')
                 cell['source'] = txt
             elif 'Voxel resolution of reference template' in cell['source']:
                 txt = cell['source']
