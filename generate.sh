@@ -21,10 +21,10 @@ generate_docker() {
                        jupyter_contrib_nbextensions jupyterlab matplotlib
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
-        pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     https://github.com/nipy/nipype/tarball/master
-                     datalad[full] duecredit nbval nibabel nilearn nistats
-                     nitime pybids autopep8" \
+        pip_install="https://github.com/nipy/nipype/tarball/master
+                     https://github.com/miykael/atlasreader/tarball/master
+                     datalad[full] duecredit nbval nibabel nilearn
+                     nistats nitime pybids autopep8" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -33,8 +33,8 @@ generate_docker() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     dask datalad[full] duecredit nbval nibabel nilearn nistats
-                     pprocess pybids autopep8" \
+                     dask datalad[full] duecredit nbval nibabel
+                     nilearn nistats pprocess pybids autopep8" \
         create_env="mvpa" \
         activate=False \
       --run-bash "source activate mvpa && cd /home/neuro  \
@@ -98,10 +98,10 @@ generate_singularity() {
                        jupyter_contrib_nbextensions jupyterlab matplotlib
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
-        pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     https://github.com/nipy/nipype/tarball/master
-                     datalad[full] duecredit nbval nibabel nilearn nistats
-                     nitime pybids autopep8" \
+        pip_install="https://github.com/nipy/nipype/tarball/master
+                     https://github.com/miykael/atlasreader/tarball/master
+                     datalad[full] duecredit nbval nibabel nilearn
+                     nistats nitime pybids autopep8" \
         create_env="neuro" \
         activate=True \
       --miniconda version="latest" \
@@ -110,8 +110,8 @@ generate_singularity() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
-                     dask datalad[full] duecredit nbval nibabel nilearn nistats
-                     pprocess pybids autopep8" \
+                     dask datalad[full] duecredit nbval nibabel
+                     nilearn nistats pprocess pybids autopep8" \
         create_env="mvpa" \
         activate=False \
       --run-bash "source activate mvpa && cd /home/neuro  \
