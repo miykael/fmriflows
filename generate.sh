@@ -22,7 +22,8 @@ generate_docker() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/nipy/nipype/tarball/master
-                     atlasreader datalad[full] duecredit nbval nibabel nilearn
+                     https://github.com/miykael/atlasreader/tarball/master
+                     datalad[full] duecredit nbval nibabel nilearn
                      nistats nitime pybids autopep8" \
         create_env="neuro" \
         activate=True \
@@ -31,7 +32,8 @@ generate_docker() {
                        jupyter_contrib_nbextensions jupyterlab matplotlib
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
-        pip_install="atlasreader dask datalad[full] duecredit nbval nibabel
+        pip_install="https://github.com/miykael/atlasreader/tarball/master
+                     dask datalad[full] duecredit nbval nibabel
                      nilearn nistats pprocess pybids autopep8" \
         create_env="mvpa" \
         activate=False \
@@ -97,7 +99,8 @@ generate_singularity() {
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/nipy/nipype/tarball/master
-                     atlasreader datalad[full] duecredit nbval nibabel nilearn
+                     https://github.com/miykael/atlasreader/tarball/master
+                     datalad[full] duecredit nbval nibabel nilearn
                      nistats nitime pybids autopep8" \
         create_env="neuro" \
         activate=True \
@@ -106,7 +109,8 @@ generate_singularity() {
                        jupyter_contrib_nbextensions jupyterlab matplotlib
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
-        pip_install="atlasreader dask datalad[full] duecredit nbval nibabel
+        pip_install="https://github.com/miykael/atlasreader/tarball/master
+                     dask datalad[full] duecredit nbval nibabel
                      nilearn nistats pprocess pybids autopep8" \
         create_env="mvpa" \
         activate=False \
