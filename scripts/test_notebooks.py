@@ -111,6 +111,10 @@ def reduce_specs():
                 txt = txt.replace('glob(template_con.format',
                                   '4 * glob(template_con.format')
                 cell['source'] = txt
+            elif '==%s\' % imgs_orig.shape[-1]' in cell['source']:
+                txt = cell['source']
+                txt = txt.replace('==%s\' % imgs_orig.shape[-1]', '!=0')
+                cell['source'] = txt
 
     # Overwrite notebook 05_analysis_multivariate with new changes
     nbformat.write(nb_node, nb_path)
