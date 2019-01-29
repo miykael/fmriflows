@@ -9,23 +9,43 @@ generate_docker() {
       --base neurodebian:stretch-non-free \
       --pkg-manager apt \
       --spm12 version=r7219 \
-      --install gcc g++ graphviz tree tree less swig netbase \
-                git-annex-standalone git-annex-remote-rclone \
+      --install gcc g++ make graphviz tree tree less swig netbase \
+                git-annex-standalone git-annex-remote-rclone liblzma-dev \
                 afni ants fsl-core \
       --add-to-entrypoint "source /etc/fsl/fsl.sh" \
       --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
       --add-to-entrypoint 'export PATH=/usr/lib/ants:$PATH' \
       --user=neuro \
       --miniconda version="latest" \
-        conda_install="python=3.6 ipython pytest jupyter jupyterlab jupyter_contrib_nbextensions
-                       numpy scipy pandas matplotlib seaborn nipy pyface sphinx h5py joblib
-                       traits scikit-learn scikit-image nbformat nb_conda statsmodels" \
+        conda_install="python=3.7 h5py ipython joblib jupyter
+                       jupyter_contrib_nbextensions jupyterlab matplotlib
+                       nb_conda nbformat nipy numpy pandas pytest scikit-image
+                       scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/nipy/nipype/tarball/master
-                     https://github.com/INCF/pybids/tarball/0.6.5
                      https://github.com/miykael/atlasreader/tarball/master
-                     nibabel nilearn nitime pymvpa2 datalad[full] nipy duecredit nbval" \
+                     datalad[full] duecredit nbval nibabel nilearn
+                     nistats nitime pybids autopep8" \
         create_env="neuro" \
         activate=True \
+      --miniconda version="latest" \
+        conda_install="python=2.7 h5py hdf5 imageio ipython joblib jupyter
+                       jupyter_contrib_nbextensions jupyterlab matplotlib
+                       nb_conda nbformat nipy numpy pandas pytest scikit-image
+                       scikit-learn scipy seaborn shogun statsmodels " \
+        pip_install="https://github.com/miykael/atlasreader/tarball/master
+                     dask datalad[full] duecredit nbval nibabel
+                     nilearn nistats pprocess pybids autopep8" \
+        create_env="mvpa" \
+        activate=False \
+      --run-bash "source activate mvpa && cd /home/neuro  \
+             && git clone git://github.com/PyMVPA/PyMVPA.git \
+             && cd PyMVPA \
+             && make 3rd \
+             && python setup.py build_ext \
+             && python setup.py install \
+             && cd .. \
+             && rm -rf PyMVPA \
+             && source deactivate mvpa" \
       --user=root \
       --run 'mkdir /data && chmod 777 /data && chmod a+s /data' \
       --run 'mkdir /workingdir && chmod 777 /workingdir && chmod a+s /workingdir' \
@@ -52,6 +72,8 @@ generate_docker() {
       --run 'chown -R neuro /data' \
       --run 'rm -rf /opt/conda/pkgs/*' \
       --user=neuro \
+      --run-bash "source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
+      --run-bash "source activate mvpa && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
       --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"0.0.0.0\" > ~/.jupyter/jupyter_notebook_config.py' \
       --workdir /home/neuro/notebooks \
       --cmd jupyter-notebook
@@ -64,22 +86,43 @@ generate_singularity() {
       --base neurodebian:stretch-non-free \
       --pkg-manager apt \
       --spm12 version=r7219 \
-      --install gcc g++ graphviz tree tree less swig netbase \
-                git-annex-standalone git-annex-remote-rclone \
+      --install gcc g++ make graphviz tree tree less swig netbase \
+                git-annex-standalone git-annex-remote-rclone liblzma-dev \
                 afni ants fsl-core \
       --add-to-entrypoint "source /etc/fsl/fsl.sh" \
       --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
+      --add-to-entrypoint 'export PATH=/usr/lib/ants:$PATH' \
       --user=neuro \
       --miniconda version="latest" \
-        conda_install="python=3.6 ipython pytest jupyter jupyterlab jupyter_contrib_nbextensions
-                       numpy scipy pandas matplotlib seaborn nipy pyface sphinx h5py joblib
-                       traits scikit-learn scikit-image nbformat nb_conda statsmodels" \
+        conda_install="python=3.7 h5py ipython joblib jupyter
+                       jupyter_contrib_nbextensions jupyterlab matplotlib
+                       nb_conda nbformat nipy numpy pandas pytest scikit-image
+                       scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/nipy/nipype/tarball/master
-                     https://github.com/INCF/pybids/tarball/0.6.5
                      https://github.com/miykael/atlasreader/tarball/master
-                     nibabel nilearn nitime pymvpa2 datalad[full] nipy duecredit nbval" \
+                     datalad[full] duecredit nbval nibabel nilearn
+                     nistats nitime pybids autopep8" \
         create_env="neuro" \
         activate=True \
+      --miniconda version="latest" \
+        conda_install="python=2.7 h5py hdf5 imageio ipython joblib jupyter
+                       jupyter_contrib_nbextensions jupyterlab matplotlib
+                       nb_conda nbformat nipy numpy pandas pytest scikit-image
+                       scikit-learn scipy seaborn shogun statsmodels " \
+        pip_install="https://github.com/miykael/atlasreader/tarball/master
+                     dask datalad[full] duecredit nbval nibabel
+                     nilearn nistats pprocess pybids autopep8" \
+        create_env="mvpa" \
+        activate=False \
+      --run-bash "source activate mvpa && cd /home/neuro  \
+             && git clone git://github.com/PyMVPA/PyMVPA.git \
+             && cd PyMVPA \
+             && make 3rd \
+             && python setup.py build_ext \
+             && python setup.py install \
+             && cd .. \
+             && rm -rf PyMVPA \
+             && source deactivate mvpa" \
       --user=root \
       --run 'mkdir /data && chmod 777 /data && chmod a+s /data' \
       --run 'mkdir /workingdir && chmod 777 /workingdir && chmod a+s /workingdir' \
@@ -106,6 +149,8 @@ generate_singularity() {
       --run 'chown -R neuro /data' \
       --run 'rm -rf /opt/conda/pkgs/*' \
       --user=neuro \
+      --run-bash "source activate neuro && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
+      --run-bash "source activate mvpa && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
       --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"0.0.0.0\" > ~/.jupyter/jupyter_notebook_config.py' \
       --workdir /home/neuro/notebooks
 }
