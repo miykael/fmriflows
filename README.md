@@ -7,19 +7,19 @@
 [![Docker Hub](https://img.shields.io/docker/pulls/miykael/fmriflows.svg?maxAge=2592000)](https://hub.docker.com/r/miykael/fmriflows/)
 [![GitHub HitCount](http://hits.dwyl.io/miykael/fmriflows.svg)](http://hits.dwyl.io/miykael/fmriflows)
 
-# fmriflows
+# fMRIflows
 
 <img src="notebooks/templates/logo_fmriflows.png" width="400px" align="right">
 
-**`fmriflows`** is a collection of fully autonomous uni- & multivariate fMRI processing pipelines. This comprises anatomical and functional preprocessing, estimation of singal confounds, as well as univariate and multivariate analysis on the subject and group level.
+**`fMRIflows`** is a collection of fully autonomous uni- & multivariate fMRI processing pipelines. This comprises anatomical and functional preprocessing, estimation of singal confounds, as well as univariate and multivariate analysis on the subject and group level.
 
-As is rather obvious, `fmriflows` was greatly inspired by [fmriprep](https://github.com/poldracklab/fmriprep) and other open source projects and borrows strongly from their ideas and solutions. But while [fmriprep](https://github.com/poldracklab/fmriprep) can be described as a "glass" box software, `fmriflows` is more like a shoebox. Simple to open, easy to understand what's inside and uncomplicated to replace and change components inside. This is all due to the fact that all the source code of `fmriflows` is stored within the notebooks.
+As is rather obvious, `fMRIflows` was greatly inspired by [fmriprep](https://github.com/poldracklab/fmriprep) and other open source projects and borrows strongly from their ideas and solutions. But while [fmriprep](https://github.com/poldracklab/fmriprep) can be described as a "glass" box software, `fMRIflows` is more like a shoebox. Simple to open, easy to understand what's inside and uncomplicated to replace and change components inside. This is all due to the fact that all the source code of `fMRIflows` is stored within the notebooks.
 
 # Installation and Usage
 
 ## Using Containers
 
-The best way to use `fmriflows` is to run it directly within the corresponding container ([Docker](https://www.docker.com/) or [Singularity](https://www.sylabs.io)). The docker image for this can be downloaded from [Docker Hub](https://hub.docker.com/r/miykael/fmriflows/) with the command `docker pull miykael/fmriflows`, and can be run with the command:
+The best way to use `fMRIflows` is to run it directly within the corresponding container ([Docker](https://www.docker.com/) or [Singularity](https://www.sylabs.io)). The docker image for this can be downloaded from [Docker Hub](https://hub.docker.com/r/miykael/fmriflows/) with the command `docker pull miykael/fmriflows`, and can be run with the command:
 
 ```
 docker run -it --rm -p 8888:8888 -v /home/user/ds001:/data miykael/fmriflows
@@ -38,19 +38,19 @@ to login with a token:
     http://(92b4887133c2 or 127.0.0.1):8888/?token=0460d35a43550ca79f0286f03c54b2ca81ed678187a2343d
 ```
 
-Remove the hash-number of the beginning of the URL and change the `:8888` to the port number that you set above. For example, if you used the flag `-p 9898:8888`, you're URL will be `http://127.0.0.1:9898/?token=0460d35a43550ca79f0286f03c54b2ca81ed678187a2343d`. Copy past this URL into your webbrowser and you will see the notebooks to run `fmriflows`.
+Remove the hash-number of the beginning of the URL and change the `:8888` to the port number that you set above. For example, if you used the flag `-p 9898:8888`, you're URL will be `http://127.0.0.1:9898/?token=0460d35a43550ca79f0286f03c54b2ca81ed678187a2343d`. Copy past this URL into your webbrowser and you will see the notebooks to run `fMRIflows`.
 
 ## Using your native environment
 
-It is also possible to run `fmriflows` outside of a container. All the important code is stored within the [notebooks](https://github.com/miykael/fmriflows/tree/master/notebooks). But for this, you need to make sure that all necessary neuroimaging and python dependencies are installed on your system. For a list of what needs to be done, see the [generating](https://github.com/miykael/fmriflows/blob/master/generate.sh) file.
+It is also possible to run `fMRIflows` outside of a container. All the important code is stored within the [notebooks](https://github.com/miykael/fmriflows/tree/master/notebooks). But for this, you need to make sure that all necessary neuroimaging and python dependencies are installed on your system. For a list of what needs to be done, see the [generating](https://github.com/miykael/fmriflows/blob/master/generate.sh) file.
 
-# `fmriflows` pipelines
+# `fMRIflows` pipelines
 
-`fmriflows` contains many different pipelines. The following is a short summary and explanation of each individual notebook.
+`fMRIflows` contains many different pipelines. The following is a short summary and explanation of each individual notebook.
 
 ## 00_spec_preparation.ipynb
 
-The notebook [00_spec_preparation.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/00_spec_preparation.ipynb) helps you to create the `JSON` files that contain the specifiation to run `fmriflows`. This is the most direct way to specify the processing parameters for `fmriflows`. Open the notebook, run it, change a few parameters as you want and you're good to go. Alternatively, you can also directly change the `JSON` specification file within your dataset folder (but you need to run `00_spec_preparation.ipynb` for this to work at least once).
+The notebook [00_spec_preparation.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/00_spec_preparation.ipynb) helps you to create the `JSON` files that contain the specifiation to run `fMRIflows`. This is the most direct way to specify the processing parameters for `fMRIflows`. Open the notebook, run it, change a few parameters as you want and you're good to go. Alternatively, you can also directly change the `JSON` specification file within your dataset folder (but you need to run `00_spec_preparation.ipynb` for this to work at least once).
 
 ## 01_preproc_anat.ipynb
 
@@ -158,6 +158,6 @@ If you want to help with this project or have any questions, fell free to fork t
 
 # Thanks and Acknowledgment
 
-We would like to thank everybody who's developing code for [Nipype](https://github.com/nipy/nipype), [fmriprep](https://fmriprep.readthedocs.io/en/stable/), [Nilearn](https://github.com/nipy/nipype), [PyMVPA](http://www.pymvpa.org/) and many other related open-source toolboxes. We were able to integrate their knowledge, code and approaches in `fmriflows`, because their code is open.
+We would like to thank everybody who's developing code for [Nipype](https://github.com/nipy/nipype), [fmriprep](https://fmriprep.readthedocs.io/en/stable/), [Nilearn](https://github.com/nipy/nipype), [PyMVPA](http://www.pymvpa.org/) and many other related open-source toolboxes. We were able to integrate their knowledge, code and approaches in `fMRIflows`, because their code is open.
 
-Thanks also to all the contributors, tester, bug reporter and feedback giver to `fmriflows`. And a special thanks to [Faruk](https://github.com/ofgulban) who created the great `fmriflows` logo.
+Thanks also to all the contributors, tester, bug reporter and feedback giver to `fMRIflows`. And a special thanks to [Faruk](https://github.com/ofgulban) who created the great `fMRIflows` logo.
