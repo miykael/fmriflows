@@ -1,0 +1,66 @@
+{
+    "subject_list": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05"
+    ],
+    "session_list": [],
+    "filters_spatial": [
+        [
+            "LP",
+            6.0
+        ]
+    ],
+    "filters_temporal": [
+        [
+            null,
+            100.0
+        ],
+        [
+            5.0,
+            100.0
+        ]
+    ],
+    "multivariate_postfix": "",
+    "clf_names": [
+        "LinearNuSVMC"
+    ],
+    "sphere_radius": 3,
+    "sphere_steps": 3,
+    "n_chunks": 6,
+    "tasks": {
+        "hrf": [
+            [
+                [
+                    "cond_01",
+                    "cond_02"
+                ],
+                [
+                    "cond_01",
+                    "cond_02"
+                ]
+            ],
+            [
+                [
+                    "cond_01",
+                    "cond_02"
+                ],
+                [
+                    "cond_03",
+                    "cond_04"
+                ]
+            ]
+        ]
+    },
+    "n_perm": 100,
+    "n_bootstrap": 100000,
+    "block_size": 1000,
+    "threshold": 0.001,
+    "multicomp_correction": "fdr_bh",
+    "fwe_rate": 0.05,
+    "atlasreader_names": "default",
+    "atlasreader_prob_thresh": 5,
+    "n_parallel_jobs": 7
+}

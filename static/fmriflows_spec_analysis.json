@@ -1,0 +1,130 @@
+{
+    "tasks": {
+        "multi": {
+            "condition_names": [
+                "cond_01",
+                "cond_02",
+                "cond_03",
+                "cond_04"
+            ],
+            "contrasts": [
+                [
+                    "cond_01",
+                    [
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "T"
+                ],
+                [
+                    "cond_02",
+                    [
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0
+                    ],
+                    "T"
+                ],
+                [
+                    "cond_03",
+                    [
+                        0.0,
+                        0.0,
+                        1.0,
+                        0.0
+                    ],
+                    "T"
+                ],
+                [
+                    "cond_04",
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "T"
+                ],
+                [
+                    "cond_01 > cond_02",
+                    [
+                        1.0,
+                       -1.0,
+                        0.0,
+                        0.0
+                    ],
+                    "T"
+                ]
+            ]
+        }
+    },
+    "subject_list": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05"
+    ],
+    "session_list": [],
+    "filters_spatial": [
+        [
+            "LP",
+            6.0
+        ]
+    ],
+    "filters_temporal": [
+        [
+            null,
+            100.0
+        ],
+        [
+            5.0,
+            100.0
+        ]
+    ],
+    "nuisance_regressors": [
+        "Rotation",
+        "Translation",
+        "FD",
+        "DVARS",
+        "TV"
+    ],
+    "use_outliers": true,
+    "model_serial_correlations": "AR(1)",
+    "model_bases": {
+        "hrf": {
+            "derivs": [
+                0,
+                0
+            ]
+        }
+    },
+    "estimation_method": {
+        "Classical": 1
+    },
+    "normalize": true,
+    "norm_res": [
+        1,
+        1,
+        1
+    ],
+    "con_per_run": true,
+    "norm_res_multi": [
+        3.0,
+        3.0,
+        3.0
+    ],
+    "analysis_postfix": "",
+    "gm_mask_thr": 0.1,
+    "height_threshold": 0.001,
+    "use_fwe_correction": false,
+    "extent_threshold": 5,
+    "use_topo_fdr": true,
+    "extent_fdr_p_threshold": 0.05,
+    "atlasreader_names": "default",
+    "atlasreader_prob_thresh": 5,
+    "n_parallel_jobs": 7
+}

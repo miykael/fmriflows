@@ -30,7 +30,7 @@
         2,
         3
     ],
-    "ref_timepoint": 250,
+    "ref_timepoint": 500,
     "res_func": 2.0,
     "filters_spatial": [
         [
@@ -39,6 +39,10 @@
         ]
     ],
     "filters_temporal": [
+        [
+            null,
+            100.0
+        ],
         [
             5.0,
             100.0
@@ -49,10 +53,10 @@
         3.27,
         3.27,
         3.27,
-        3.27,
+        null,
         null,
         null
     ],
     "n_independent_components": 10,
-    "n_parallel_jobs": 8
+    "n_parallel_jobs": 7
 }
