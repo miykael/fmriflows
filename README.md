@@ -94,7 +94,7 @@ The notebook [02_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael
  - `ref_timepoint`: Reference timepoint for slicetime correction, in milliseconds
  - `res_func`: Isometric resample resolution for after image coregistration
  - `filters_spatial`: List of spatial filters to apply. Use `LP` for lowpass, `HP` for highpass and `BP` for bandpass spatial filtering. For example [[`LP`, 6.0], [`HP`, 2.0]] will run the analysis once with a spatial lowpass filter of FWHM=6mm and once with a spatial highpass filter of FWHM=2mm.
- - `filters_temporal`: List of temporal filters to apply. First element will define lowpass, second highpass cutoff. Use `None` to not use given filter. For example `[[5.0, 100.0], [5.0, 100.0]]` will run the analysis once with a temporal lowpass filter of 5Hz and highpass filter of 100Hz, and once with a temporal filter of only a highpass filter of 100Hz.,
+ - `filters_temporal`: List of temporal filters to apply. First element will define lowpass, second highpass cutoff. Use `null` to not use given filter. For example `[[5.0, 100.0], [null, 100.0]]` will run the analysis once with a temporal lowpass filter of 5Hz and highpass filter of 100Hz, and once with a temporal filter of only a highpass filter of 100Hz.,
  - `n_compcor_confounds`: Number of anatomical and functional CompCor componenets to compute. Defautl is 5.
  - `outlier_thresholds`: Thresholds used to performe outlier detection on FD, DVARS, TV, GM, WM and CSF. Use `None` if parameter shouldn't be used for outlier detection.
  - `n_independent_components`: Number of ICA components that should be estimaed. Default is 10.
@@ -113,7 +113,7 @@ Additionally to the preprocessing, the following signal confounds are computed:
 After functional preprocessing the following output figures are generated:
 
 ### Mean Image and CompCor Masks
-This panel shows the mean functional image in gray, and the brainmask (red) that was used to compute DVARS and the temporal (green) and anatomical (yellow) CompCor mask.
+This panel shows the mean functional image in gray, and the brainmask (red) that was used to compute DVARS and the temporal (green) and anatomical (blue) CompCor mask.
 
 <img src="static/outputs/preproc_func_overlays.png" width="800px"  class="center">
 
