@@ -1,6 +1,7 @@
 import os
 import nipype
 import nbformat
+from glob import glob
 
 
 def test_version():
@@ -187,3 +188,10 @@ if __name__ == '__main__':
         pytest_cmd += test
         print(pytest_cmd)
         os.system(pytest_cmd)
+
+    # Print content of all crash files to terminal
+    crash_files = sorted(glob('/home/neuro/notebooks/crash-*.pklz'))
+    for c in crash_files:
+        cmd_prep = "nipypecli crash " + c
+        print(cmd_prep)
+        os.system(cmd_prep)
