@@ -101,7 +101,7 @@ The notebook [02_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael
 
 The simplified workflow of the anatomical preprocessing looks as follows:
 
-<img src="static/preproc_func.png" width="800px"  class="center">
+<img src="static/preproc_func.png" width="500px"  class="center">
 
 Additionally to the preprocessing, the following signal confounds are computed:
  - Friston's 24-parameter model for motion parameters
@@ -120,36 +120,36 @@ This panel shows the mean functional image in gray, and the brainmask (red) that
 ### Carpet plot of the temporal filtered functional image
 This panel shows the signal for (almost) every voxel (y-axis), over time in volumes (x-axis). The panel shows voxel in the gray matter (top part), white matter (between blue and red line) and CSF (bottom section). The data was standardized to the global signal, and ordered within a given region according to correlation coefficient to the average signal.
 
-<img src="static/outputs/preproc_func_carpet.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_carpet_nofilt.png" width="800px"  class="center">
 
 ### Main confounds with highlighted outliers
 This panel shows the main confounds. Shown are FD (Framewise Displacement) and DVARS, as well as the average signal in TV (total brain volume), GM (gray matter), WM (white matter) and CSF (cerebral spinal fluid). Vertical lines in black indicate outliers, as defined by threshold values.
 
-<img src="static/outputs/preproc_func_confounds_main.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_main_nofilt.png" width="800px"  class="center">
 
 ### Motion Parameters
 This panel shows the motion parameters.
 
-<img src="static/outputs/preproc_func_confounds_motion.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_motion_nofilt.png" width="800px"  class="center">
 
 ### Anatomical CompCor Components
 This panel shows the anatomical CompCor components.
 
-<img src="static/outputs/preproc_func_confounds_compA.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_compA_nofilt.png" width="800px"  class="center">
 
 ### Temporal CompCor Components
 This panel shows the temporal CompCor components.
 
-<img src="static/outputs/preproc_func_confounds_compT.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_compT_nofilt.png" width="800px"  class="center">
 
 ### ICA Components
 This panel shows the ICA components. Left side of the figure shows the correlation between the component and the functional image, over time. The right panel shows the power spectrum density of this component, with values in Hz on the x-axis.
 
-<img src="static/outputs/preproc_func_ICA_comp_signal.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_ICA_comp_signal_nofilt.png" width="800px"  class="center">
 
 This panel shows the load of the ICA components within the brain volume.
 
-<img src="static/outputs/preproc_func_ICA_comp_brain.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_ICA_comp_brain_nofilt.png" width="800px"  class="center">
 
 # Feedback, Help & Support
 
