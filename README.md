@@ -71,12 +71,12 @@ After anatomical preprocessing the following output figures are generated:
 ### Tissue Segmentation of T1w
 This panel shows quality of the T1-weighted image segmentation, with brain tissues highlighted in green for Gray Matter (GM), in beige for White Matter (WM) and in blue for Cerebral Spinal Fluid (CSF).
 
-<img src="static/outputs/preproc_anat_brain.png" width="800px"  class="center">
+<img src="static/outputs/preproc_anat_segmentation.png" width="800px"  class="center">
 
 ### Brain Extraction of T1w
 This panel shows the quality of the brain extraction. The brain highlighted in red is overlayed on the subject specific T1-weighted image in gray.
 
-<img src="static/outputs/preproc_anat_segmentation.png" width="800px"  class="center">
+<img src="static/outputs/preproc_anat_brain.png" width="800px"  class="center">
 
 ### T1w to MNI registration
 This panel shows the quality of the nonlinear template registration. The normalized brain highlighted in yellow is overlayed on the ICBM T1-weighted template image in gray. Regions in red and blue show negative and positive deformation discrepancy between the normalized subject image and the template.
