@@ -69,7 +69,7 @@ The simplified workflow of the anatomical preprocessing looks as follows:
 After anatomical preprocessing the following output figures are generated:
 
 ### Tissue Segmentation of T1w
-This panel shows quality of the T1-weighted image segmentation, with brain tissues highlighted in green for Gray Matter (GM), in beige for White Matter (WM) and in blue for Cerebral Spinal Fluid (CSF).
+This panel shows quality of the T1-weighted image segmentation, with brain tissues highlighted in green for Gray Matter (GM), in beige for White Matter (WM) and in blue for Cerebrospinal Fluid (CSF).
 
 <img src="static/outputs/preproc_anat_segmentation.png" width="800px"  class="center">
 
