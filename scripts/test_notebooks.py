@@ -30,8 +30,8 @@ def prepare_test_data():
 def reduce_specs():
     """Reduce specification parameters in JSON file a notebooks file."""
 
-    # Load notebook 00_spec_preparation
-    nb_path = '/home/neuro/notebooks/00_spec_preparation.ipynb'
+    # Load notebook 01_spec_preparation
+    nb_path = '/home/neuro/notebooks/01_spec_preparation.ipynb'
     with open(nb_path, 'rb') as nb_file:
         nb_node = nbformat.reads(nb_file.read(), nbformat.NO_CONVERT)
 
@@ -95,12 +95,12 @@ def reduce_specs():
                 txt = txt.replace(' = 0.001', ' = 0.1')
                 cell['source'] = txt
 
-    # Overwrite notebook 00_spec_preparation with new changes
+    # Overwrite notebook 01_spec_preparation with new changes
     nbformat.write(nb_node, nb_path)
     print('JSON specification file creation adapted to demo dataset.')
 
-    # Load notebook 05_analysis_multivariate
-    nb_path = '/home/neuro/notebooks/05_analysis_multivariate.ipynb'
+    # Load notebook 06_analysis_multivariate
+    nb_path = '/home/neuro/notebooks/06_analysis_multivariate.ipynb'
     with open(nb_path, 'rb') as nb_file:
         nb_node = nbformat.reads(nb_file.read(), nbformat.NO_CONVERT)
 
@@ -117,14 +117,14 @@ def reduce_specs():
                 txt = txt.replace('==%s\' % imgs_orig.shape[-1]', '!=0\'')
                 cell['source'] = txt
 
-    # Overwrite notebook 05_analysis_multivariate with new changes
+    # Overwrite notebook 06_analysis_multivariate with new changes
     nbformat.write(nb_node, nb_path)
     print('Multivariate specification adapted to demo dataset.')
 
 
 def reduce_comp_time_anat():
     """Change ANTs' normalization command to reduce comp. time on CircleCi."""
-    nb_path = '/home/neuro/notebooks/01_preproc_anat.ipynb'
+    nb_path = '/home/neuro/notebooks/02_preproc_anat.ipynb'
 
     # Load notebook
     with open(nb_path, 'rb') as nb_file:
@@ -158,11 +158,11 @@ if __name__ == '__main__':
 
     # Notebooks that should be tested in environment 'neuro'
     notebooks = [
-        '/home/neuro/notebooks/00_spec_preparation.ipynb',
-        '/home/neuro/notebooks/01_preproc_anat.ipynb',
-        '/home/neuro/notebooks/02_preproc_func.ipynb',
-        '/home/neuro/notebooks/03_analysis_1st-level.ipynb',
-        '/home/neuro/notebooks/04_analysis_2nd-level.ipynb',
+        '/home/neuro/notebooks/01_spec_preparation.ipynb',
+        '/home/neuro/notebooks/02_preproc_anat.ipynb',
+        '/home/neuro/notebooks/03_preproc_func.ipynb',
+        '/home/neuro/notebooks/04_analysis_1st-level.ipynb',
+        '/home/neuro/notebooks/05_analysis_2nd-level.ipynb',
     ]
 
     for test in notebooks:
@@ -173,7 +173,7 @@ if __name__ == '__main__':
 
     # Notebooks that should be tested in environment 'mvpa'
     notebooks = [
-        '/home/neuro/notebooks/05_analysis_multivariate.ipynb',
+        '/home/neuro/notebooks/06_analysis_multivariate.ipynb',
     ]
 
     for test in notebooks:

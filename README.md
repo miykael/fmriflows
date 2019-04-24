@@ -48,13 +48,13 @@ It is also possible to run `fMRIflows` outside of a container. All the important
 
 `fMRIflows` contains many different pipelines. The following is a short summary and explanation of each individual notebook.
 
-## 00_spec_preparation.ipynb
+## 01_spec_preparation.ipynb
 
-The notebook [00_spec_preparation.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/00_spec_preparation.ipynb) helps you to create the `JSON` files that contain the specifiation to run `fMRIflows`. This is the most direct way to specify the processing parameters for `fMRIflows`. Open the notebook, run it, change a few parameters as you want and you're good to go. Alternatively, you can also directly change the `JSON` specification file within your dataset folder (but you need to run `00_spec_preparation.ipynb` for this to work at least once).
+The notebook [01_spec_preparation.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/01_spec_preparation.ipynb) helps you to create the `JSON` files that contain the specifiation to run `fMRIflows`. This is the most direct way to specify the processing parameters for `fMRIflows`. Open the notebook, run it, change a few parameters as you want and you're good to go. Alternatively, you can also directly change the `JSON` specification file within your dataset folder (but you need to run `01_spec_preparation.ipynb` for this to work at least once).
 
-## 01_preproc_anat.ipynb
+## 02_preproc_anat.ipynb
 
-The notebook [01_preproc_anat.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/00_spec_preparation.ipynb) contains perform anatomical preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
+The notebook [02_preproc_anat.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/01_spec_preparation.ipynb) contains perform anatomical preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
 
  - `subject_list_anat`: List of subject identifier to preprocess
  - `session_list_anat`: List of session identifier to preprocess (set to `[]` if dataset doesn't contain session identifiers)
@@ -83,9 +83,9 @@ This panel shows the quality of the nonlinear template registration. The normali
 
 <img src="static/outputs/preproc_anat_normalized.png" width="800px"  class="center">
 
-## 02_preproc_func.ipynb
+## 03_preproc_func.ipynb
 
-The notebook [02_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/00_spec_preparation.ipynb) contains perform functional preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
+The notebook [03_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/01_spec_preparation.ipynb) contains perform functional preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
 
  - `subject_list_func`: List of subject identifier to preprocess
  - `session_list_func`: List of session identifier to preprocess (set to `[]` if dataset doesn't contain session identifiers)
