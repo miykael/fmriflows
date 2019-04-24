@@ -128,9 +128,9 @@ This panel shows the main confounds. Shown are FD (Framewise Displacement) and D
 <img src="static/outputs/preproc_func_confounds_main_nofilt.png" width="800px"  class="center">
 
 ### Motion Parameters
-This panel shows the motion parameters.
+This panel shows the motion parameters (3 rotation and 3 translation parameters). Colored lines are motion parameters after the application of a temporal low-pass filter at 5Hz. Gray lines indicate motion parameters before temporal filter were applied.
 
-<img src="static/outputs/preproc_func_confounds_motion_nofilt.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_motion_filt.png" width="800px"  class="center">
 
 ### Anatomical CompCor Components
 This panel shows the anatomical CompCor components.
