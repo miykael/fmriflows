@@ -11,7 +11,7 @@ generate_docker() {
       --spm12 version=r7219 \
       --install gcc g++ make graphviz tree tree less swig netbase \
                 git-annex-standalone git-annex-remote-rclone liblzma-dev \
-                afni ants fsl-core \
+                afni ants fsl-core convert3d \
       --add-to-entrypoint "source /etc/fsl/fsl.sh" \
       --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
       --add-to-entrypoint 'export PATH=/usr/lib/ants:$PATH' \
@@ -88,7 +88,7 @@ generate_singularity() {
       --spm12 version=r7219 \
       --install gcc g++ make graphviz tree tree less swig netbase \
                 git-annex-standalone git-annex-remote-rclone liblzma-dev \
-                afni ants fsl-core \
+                afni ants fsl-core convert3d \
       --add-to-entrypoint "source /etc/fsl/fsl.sh" \
       --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
       --add-to-entrypoint 'export PATH=/usr/lib/ants:$PATH' \

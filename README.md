@@ -48,13 +48,13 @@ It is also possible to run `fMRIflows` outside of a container. All the important
 
 `fMRIflows` contains many different pipelines. The following is a short summary and explanation of each individual notebook.
 
-## 00_spec_preparation.ipynb
+## 01_spec_preparation.ipynb
 
-The notebook [00_spec_preparation.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/00_spec_preparation.ipynb) helps you to create the `JSON` files that contain the specifiation to run `fMRIflows`. This is the most direct way to specify the processing parameters for `fMRIflows`. Open the notebook, run it, change a few parameters as you want and you're good to go. Alternatively, you can also directly change the `JSON` specification file within your dataset folder (but you need to run `00_spec_preparation.ipynb` for this to work at least once).
+The notebook [01_spec_preparation.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/01_spec_preparation.ipynb) helps you to create the `JSON` files that contain the specifiation to run `fMRIflows`. This is the most direct way to specify the processing parameters for `fMRIflows`. Open the notebook, run it, change a few parameters as you want and you're good to go. Alternatively, you can also directly change the `JSON` specification file within your dataset folder (but you need to run `01_spec_preparation.ipynb` for this to work at least once).
 
-## 01_preproc_anat.ipynb
+## 02_preproc_anat.ipynb
 
-The notebook [01_preproc_anat.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/00_spec_preparation.ipynb) contains perform anatomical preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
+The notebook [02_preproc_anat.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/01_spec_preparation.ipynb) contains perform anatomical preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
 
  - `subject_list_anat`: List of subject identifier to preprocess
  - `session_list_anat`: List of session identifier to preprocess (set to `[]` if dataset doesn't contain session identifiers)
@@ -83,9 +83,9 @@ This panel shows the quality of the nonlinear template registration. The normali
 
 <img src="static/outputs/preproc_anat_normalized.png" width="800px"  class="center">
 
-## 02_preproc_func.ipynb
+## 03_preproc_func.ipynb
 
-The notebook [02_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/00_spec_preparation.ipynb) contains perform functional preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
+The notebook [03_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/01_spec_preparation.ipynb) contains perform functional preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
 
  - `subject_list_func`: List of subject identifier to preprocess
  - `session_list_func`: List of session identifier to preprocess (set to `[]` if dataset doesn't contain session identifiers)
@@ -101,7 +101,7 @@ The notebook [02_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael
 
 The simplified workflow of the anatomical preprocessing looks as follows:
 
-<img src="static/preproc_func.png" width="800px"  class="center">
+<img src="static/preproc_func.png" width="500px"  class="center">
 
 Additionally to the preprocessing, the following signal confounds are computed:
  - Friston's 24-parameter model for motion parameters
@@ -120,36 +120,36 @@ This panel shows the mean functional image in gray, and the brainmask (red) that
 ### Carpet plot of the temporal filtered functional image
 This panel shows the signal for (almost) every voxel (y-axis), over time in volumes (x-axis). The panel shows voxel in the gray matter (top part), white matter (between blue and red line) and CSF (bottom section). The data was standardized to the global signal, and ordered within a given region according to correlation coefficient to the average signal.
 
-<img src="static/outputs/preproc_func_carpet.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_carpet_nofilt.png" width="800px"  class="center">
 
 ### Main confounds with highlighted outliers
 This panel shows the main confounds. Shown are FD (Framewise Displacement) and DVARS, as well as the average signal in TV (total brain volume), GM (gray matter), WM (white matter) and CSF (cerebral spinal fluid). Vertical lines in black indicate outliers, as defined by threshold values.
 
-<img src="static/outputs/preproc_func_confounds_main.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_main_nofilt.png" width="800px"  class="center">
 
 ### Motion Parameters
-This panel shows the motion parameters.
+This panel shows the motion parameters (3 rotation and 3 translation parameters). Colored lines are motion parameters after the application of a temporal low-pass filter at 5Hz. Gray lines indicate motion parameters before temporal filter were applied.
 
-<img src="static/outputs/preproc_func_confounds_motion.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_motion_filt.png" width="800px"  class="center">
 
 ### Anatomical CompCor Components
 This panel shows the anatomical CompCor components.
 
-<img src="static/outputs/preproc_func_confounds_compA.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_compA_nofilt.png" width="800px"  class="center">
 
 ### Temporal CompCor Components
 This panel shows the temporal CompCor components.
 
-<img src="static/outputs/preproc_func_confounds_compT.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_confounds_compT_nofilt.png" width="800px"  class="center">
 
 ### ICA Components
 This panel shows the ICA components. Left side of the figure shows the correlation between the component and the functional image, over time. The right panel shows the power spectrum density of this component, with values in Hz on the x-axis.
 
-<img src="static/outputs/preproc_func_ICA_comp_signal.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_ICA_comp_signal_nofilt.png" width="800px"  class="center">
 
 This panel shows the load of the ICA components within the brain volume.
 
-<img src="static/outputs/preproc_func_ICA_comp_brain.png" width="800px"  class="center">
+<img src="static/outputs/preproc_func_ICA_comp_brain_nofilt.png" width="800px"  class="center">
 
 # Feedback, Help & Support
 
