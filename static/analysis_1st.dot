@@ -26,9 +26,9 @@ digraph analysis_first{
     subgraph cluster_analysisflow_normalize {
             edge [color="#FF0000"];
             style=filled;
-            fillcolor="#FFB4B4";
+            fillcolor="#B4FFB4";
             label="Normalize Univariate Contrasts";
-        normalize_uni[label="Normalize Univariate Contrasts (ANTs)", style=filled, fillcolor="#FFE6E6"];
+        normalize_uni[label="Normalize Univariate Contrasts (ANTs)", style=filled, fillcolor="#E6FFE6"];
     }    subgraph cluster_analysisflow_multivariate {
             edge [color="#FF0000"];
             style=filled;
@@ -37,7 +37,7 @@ digraph analysis_first{
         comp_con_per_run[label="Create Single Condition Contrast List (Python)", style=filled, fillcolor="#FFE6E6"];
         write_labels_run[label="Save Condition Order to File (Python)", style=filled, fillcolor="#FFE6E6"];
         level1_conest_multi[label="Estimate Single Condition Contrasts (SPM)", style=filled, fillcolor="#FFE6E6"];
-        normalize_multi[label="Normalize Single Condition Contrasts (ANTs)", style=filled, fillcolor="#FFE6E6"];
+        normalize_multi[label="Normalize Single Condition Contrasts (ANTs)", style=filled, fillcolor="#E6FFE6"];
         comp_con_per_run -> write_labels_run;
         comp_con_per_run -> level1_conest_multi;
         level1_conest_multi -> normalize_multi;

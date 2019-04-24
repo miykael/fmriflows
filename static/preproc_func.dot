@@ -4,20 +4,22 @@ digraph preproc_func{
       style=filled;
       fillcolor="#B4B4FF";
       label="Functional Preprocessing";
-      motion_correction[label="Motion correct images (FSL & Nilearn)", style=filled, fillcolor="#E6E6FF"];
+      motion_estimation[label="Estimate Original Motion (FSL)", style=filled, fillcolor="#E6E6FF"];
+      motion_parameters[label="Create New Motion Parameters (Python)", style=filled, fillcolor="#E6E6FF"];
       slice_time[label="Slice Time Correction (SPM)", style=filled, fillcolor="#E6E6FF"];
-      get_Param[label="Collect Analysis Parameters (Python)", shape=box3d,style=filled, color=black, colorscheme=greys7, fillcolor=2];
+      get_Param[label="Collect Analysis Parameters (Python)", style=filled, fillcolor="#E6E6FF"];
+      inputnode[label="Collect Input Files (Nipype)", style=filled, fillcolor="#E6E6FF"];
+      apply_warp[label="Apply MC (& Normalization) Warp (C3D & ANTs)", style=filled, fillcolor="#E6E6FF"];
     subgraph cluster_prepareflow {
             edge [color="#FF0000"];
             style=filled;
             fillcolor="#FFB4B4";
             label="Prepare Workflow";
             prepareflow_reorient[label="Reorient Image (Nipye)", style=filled, fillcolor="#FFE6E6"];
-            prepareflow_nss_detection[label="Non-steady-state detection (Nipype)", style=filled, fillcolor="#FFE6E6"];
-            prepareflow_brain_extraction[label="Create brain mask (ANTs, FSL & Nilearn)", style=filled, fillcolor="#FFE6E6"];
+            prepareflow_nss_detection[label="Non-Steady-State Detection (Nipype)", style=filled, fillcolor="#FFE6E6"];
+            prepareflow_brain_extraction[label="Create Brain Mask (ANTs, FSL & Nilearn)", style=filled, fillcolor="#FFE6E6"];
             prepareflow_reorient -> prepareflow_nss_detection;
             prepareflow_reorient -> prepareflow_brain_extraction;
-            prepareflow_nss_detection -> prepareflow_brain_extraction [color="#00000000"];
     }
     subgraph cluster_coregflow {
             edge [color="#FF0000"];
@@ -26,33 +28,42 @@ digraph preproc_func{
             label="Coregistration Workflow";
             coregflow_coreg_pre[label="Initial Coregistration (FSL)", style=filled, fillcolor="#FFE6E6"];
             coregflow_coreg_bbr[label="White Matter Boundary-Based Registration (FSL)", style=filled, fillcolor="#FFE6E6"];
-            coregflow_apply_coreg[label="Apply coregistration (FSL)", style=filled, fillcolor="#FFE6E6"];
             coregflow_coreg_pre -> coregflow_coreg_bbr;
-            coregflow_coreg_bbr -> coregflow_apply_coreg;
     }
     subgraph cluster_filterflow {
             edge [color="#FF0000"];
             style=filled;
             fillcolor="#FFB4B4";
             label="Filter Workflow";
-            filterflow_filter_preparation[label="Filter preparation (Nilearn)", style=filled, fillcolor="#FFE6E6"];
-            filterflow_temporal_filter[label="Temporal Filter (AFNI & Nilearn)", style=filled, fillcolor="#FFE6E6"];
+            filterflow_warp_masks[label="Warped Brain Masks (ANTs, FSL & Nilearn)", style=filled, fillcolor="#FFE6E6"];
+            filterflow_temporal_filter[label="Temporal Filter (AFNI & Nilearn)", shape=box3d,style=filled, color=black, colorscheme=greys7, fillcolor=2];
             filterflow_spatial_filter[label="Spatial Filter (Nilearn)", shape=box3d,style=filled, color=black, colorscheme=greys7, fillcolor=2];
-            filterflow_filter_preparation -> filterflow_temporal_filter;
+            filterflow_warp_masks -> filterflow_temporal_filter;
             filterflow_temporal_filter -> filterflow_spatial_filter;
     }
-    prepareflow_brain_extraction -> motion_correction;
-    prepareflow_nss_detection -> motion_correction;
-    motion_correction -> slice_time;
-    motion_correction -> coregflow_coreg_pre;
-    motion_correction -> coregflow_coreg_bbr;
-    slice_time -> coregflow_apply_coreg;
-    slice_time -> coregflow_coreg_pre [color="#00000000"];
-    coregflow_apply_coreg -> filterflow_filter_preparation;
+    get_Param -> prepareflow_reorient [color="#00000000"];
+    prepareflow_brain_extraction -> slice_time [color="#00000000"];
+    prepareflow_nss_detection -> prepareflow_brain_extraction [color="#00000000"];
+    coregflow_coreg_bbr -> motion_parameters [color="#00000000"];
+    inputnode -> prepareflow_reorient;
+    prepareflow_reorient -> motion_estimation;
+    prepareflow_brain_extraction -> motion_estimation;
+    prepareflow_nss_detection -> motion_estimation;
+    prepareflow_reorient -> slice_time;
+    motion_estimation -> coregflow_coreg_pre;
+    motion_estimation -> coregflow_coreg_bbr;
+    motion_estimation -> motion_parameters;
+    motion_parameters -> apply_warp;
+    slice_time -> apply_warp;
+    coregflow_coreg_bbr -> apply_warp;
+    prepareflow_nss_detection -> apply_warp;
+    apply_warp -> filterflow_warp_masks;
     get_Param -> slice_time;
-    get_Param -> filterflow_filter_preparation;
+    get_Param -> motion_parameters;
+    get_Param -> filterflow_warp_masks;
     get_Param -> filterflow_temporal_filter;
     get_Param -> prepareflow_brain_extraction;
-    get_Param -> prepareflow_reorient [color="#00000000"];
   }
 }
+
+
