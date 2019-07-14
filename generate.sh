@@ -16,6 +16,7 @@ generate_docker() {
       --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
       --add-to-entrypoint 'export PATH=/usr/lib/ants:$PATH' \
       --user=neuro \
+      --workdir /home/neuro \
       --miniconda version="latest" \
         conda_install="python=3.7 h5py ipython joblib jupyter
                        jupyter_contrib_nbextensions jupyterlab matplotlib
@@ -93,6 +94,7 @@ generate_singularity() {
       --add-to-entrypoint 'export PATH=/usr/lib/afni/bin:$PATH' \
       --add-to-entrypoint 'export PATH=/usr/lib/ants:$PATH' \
       --user=neuro \
+      --workdir /home/neuro \
       --miniconda version="latest" \
         conda_install="python=3.7 h5py ipython joblib jupyter
                        jupyter_contrib_nbextensions jupyterlab matplotlib
