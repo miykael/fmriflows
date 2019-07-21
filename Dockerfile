@@ -311,7 +311,7 @@ RUN echo '{ \
     \n    [ \
     \n      "miniconda", \
     \n      { \
-    \n        "version": "latest", \
+    \n        "miniconda_version": "4.6", \
     \n        "conda_install": [ \
     \n          "python=3.7", \
     \n          "h5py", \
@@ -355,7 +355,7 @@ RUN echo '{ \
     \n    [ \
     \n      "miniconda", \
     \n      { \
-    \n        "version": "latest", \
+    \n        "miniconda_version": "4.6", \
     \n        "conda_install": [ \
     \n          "python=2.7", \
     \n          "h5py", \
