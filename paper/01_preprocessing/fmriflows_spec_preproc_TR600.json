@@ -1,0 +1,89 @@
+{
+    "subject_list_anat": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17"
+    ],
+    "session_list_anat": [],
+    "T1w_id": "T1w",
+    "res_norm": [
+        1.0,
+        1.0,
+        1.0
+    ],
+    "norm_accuracy": "precise",
+    "subject_list_func": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17"
+    ],
+    "session_list_func": [],
+    "task_list": [
+        "hrf"
+    ],
+    "run_list": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ],
+    "ref_timepoint": 300,
+    "res_func": 3.0,
+    "filters_spatial": [
+        [
+            "LP",
+            0.0
+        ]
+    ],
+    "filters_temporal": [
+        [
+            null,
+            100.0
+        ],
+        [
+            5.0,
+            100.0
+        ]
+    ],
+    "n_compcor_confounds": 5,
+    "outlier_thresholds": [
+        3.27,
+        3.27,
+        3.27,
+        null,
+        null,
+        null
+    ],
+    "n_independent_components": 10,
+    "n_parallel_jobs": 8
+}
