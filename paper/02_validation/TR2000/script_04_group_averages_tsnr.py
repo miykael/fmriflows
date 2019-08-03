@@ -38,6 +38,12 @@ for method, file_list in [['fsl', files_fsl],
         template_gm = 'templates/mni_icbm152_nlin_asym_09c_1.0mm_tpm_gm.nii.gz'
         template_wm = 'templates/mni_icbm152_nlin_asym_09c_1.0mm_tpm_wm.nii.gz'
 
+    # Correct TSNR images for lenght of functional run
+    n_volumes = 275
+    tsnr_list = []
+    for f in file_list:
+        tsnr_list += [math_img('img * %.08f' % np.sqrt(n_volumes), img=f)]
+
     # Concatenate group means
     group_means = concat_imgs(file_list)
 
@@ -51,28 +57,22 @@ for method, file_list in [['fsl', files_fsl],
     group_img.to_filename('%s/group_tsnr%s.nii.gz' % (res_path, method))
 
     # Plot figure
-    vmin = 25
-    vmax = 75
-
-    fig = plt.figure(figsize=(12, 3))
     display = plot_anat(
         group_img,
-        display_mode='ortho',
-        cut_coords=[-20, -25, 10],
-        colorbar=True,
+        display_mode='xz',
+        cut_coords=[-20, 10],
+        colorbar=False,
         cmap='Spectral_r',
-        threshold=vmin,
-        vmin=vmin,
-        vmax=vmax,
-        title=method,
+        threshold=350,
+        vmin=350,
+        vmax=1400,
         dim=1,
-        annotate=True,
+        annotate=False,
         draw_cross=False,
         black_bg=True,
-        figure=fig,
     )
     img_tmp = nb.load(template_gm)
-    fig.savefig('%s/group_tsnr%s.svg' % (res_path, method))
+    display.savefig('%s/group_tsnr%s_%s.svg' % (res_path, postfix, method))
 
     tsnr_values.append([method, group_img.get_data()])
 
