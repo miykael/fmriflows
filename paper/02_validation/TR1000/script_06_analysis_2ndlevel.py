@@ -47,7 +47,7 @@ for con in contrasts:
         for cidx, tmap in enumerate(cons):
             _, threshold = map_threshold(
                 tmap, level=p_thresh, height_control=height_control)
-            tmap = math_img('img * (np.abs(img)>=%.8f)' % threshold, img=tmap)
+            tmap = math_img('img * (img>=%.8f)' % threshold, img=tmap)
             tmaps.append(tmap)
             print(threshold)
 
@@ -120,12 +120,12 @@ for con in contrasts:
 
         plot_glass_brain(
             img_p_heat,
-            display_mode='lyrz',
+            display_mode='xz',
             black_bg=True,
             colorbar=True,
-            vmin=0.25,
+            vmin=0.35,
             vmax=0.8,
-            threshold=0.25,
+            threshold=0.35,
             plot_abs=False,
             symmetric_cbar=False,
             title='%s: %s (%s - %s)' % (method, con, height_control, p_thresh),
@@ -136,7 +136,7 @@ for con in contrasts:
             display_mode='z',
             black_bg=False,
             colorbar=True,
-            threshold=0.25,
+            threshold=0.35,
             symmetric_cbar=False,
             bg_img=template,
             vmax=0.8,
