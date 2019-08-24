@@ -69,19 +69,19 @@ for method, file_list in [['fsl', files_fsl],
     group_img.to_filename('%s/group_stdev_%s.nii.gz' % (res_path, method))
 
     # Plot figure
-    fig = plt.figure(figsize=(12, 3))
+    fig = plt.figure(figsize=(4, 4))
     display = plot_anat(
         group_img,
-        display_mode='ortho',
-        cut_coords=[-20, -10, 10],
-        colorbar=True,
+        display_mode='yz',
+        cut_coords=[-10, 10],
+        colorbar=False,
         cmap='cividis',
         threshold=50,
         vmin=50,
         vmax=250,
-        title=method,
+        #title=method,
         dim=1,
-        annotate=True,
+        annotate=False,
         draw_cross=False,
         black_bg=True,
         figure=fig,
