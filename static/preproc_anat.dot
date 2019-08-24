@@ -3,10 +3,9 @@ digraph preproc_anat{
       edge [color="#0000FF"];
       style=filled;
       fillcolor="#B4B4FF";
-      label="Anatomical Preprocessing";
     reorient[label="Reorient Image (Nipype)", style=filled, fillcolor="#E6E6FF"];
     cropFOV[label="Crop FOV (FSL)", style=filled, fillcolor="#E6E6FF"];
-    n4[label="N4 Bias Field Correction (ANTs)", style=filled, fillcolor="#E6E6FF"];
+    n4[label="N4 Bias Field\nCorrection (ANTs)", style=filled, fillcolor="#E6E6FF"];
     segment[label="Segmentation (SPM)", style=filled, fillcolor="#E6E6FF"];
     extract_brain[label="Extract Brain (Nilearn)", style=filled, fillcolor="#E6E6FF"];
     antsreg[label="Normalization (ANTs)", style=filled, fillcolor="#E6E6FF"];

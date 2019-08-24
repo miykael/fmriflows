@@ -3,20 +3,19 @@ digraph analysis_first{
       edge [color="#0000FF"];
       style=filled;
       fillcolor="#B4B4FF";
-      label="1st-Level Analysis";
-    get_param[label="Collect General Parameters (Python)", style=filled, fillcolor="#E6E6FF"];
-    collect_files[label="Collect Preprocessed Files (Nipype)", style=filled, fillcolor="#E6E6FF"];
     subgraph cluster_analysisflow_univariate {
             edge [color="#FF0000"];
             style=filled;
             fillcolor="#FFB4B4";
-            label="Univariate Analysis";
-        nuisance_reg[label="Load Nuisance Regressors (Python)", style=filled, fillcolor="#FFE6E6"];
+            label=<<B>Univariate Analysis</B>>;
+        collect_files[label="Collect Preprocessed\nFiles (Nipype)", style=filled, fillcolor="#FFE6E6"];
+        nuisance_reg[label="Load Nuisance\nRegressors (Python)", style=filled, fillcolor="#FFE6E6"];
         get_model_param[label="Collect Model Parameters (Nipype)", style=filled, fillcolor="#FFE6E6"];
         model_spec[label="Specify Model (Nipype)", style=filled, fillcolor="#FFE6E6"];
         level1_design[label="Create 1st-level Model (SPM)", style=filled, fillcolor="#FFE6E6"];
         level1_est[label="Estimate 1st-level Model (SPM)", style=filled, fillcolor="#FFE6E6"];
         level1_conest_uni[label="Estimate Univariate Contrasts (SPM)", style=filled, fillcolor="#FFE6E6"];
+        collect_files -> model_spec;
         nuisance_reg -> model_spec;
         get_model_param -> model_spec;
         model_spec -> level1_design;
@@ -27,13 +26,13 @@ digraph analysis_first{
             edge [color="#FF0000"];
             style=filled;
             fillcolor="#B4FFB4";
-            label="Normalize Univariate Contrasts";
+            label=<<B>Normalize Univariate Contrasts</B>>;
         normalize_uni[label="Normalize Univariate Contrasts (ANTs)", style=filled, fillcolor="#E6FFE6"];
     }    subgraph cluster_analysisflow_multivariate {
             edge [color="#FF0000"];
             style=filled;
             fillcolor="#FFB4B4";
-            label="Multivariate Analysis Preparation";
+            label=<<B>Multivariate Analysis Preparation</B>>;
         comp_con_per_run[label="Create Single Condition Contrast List (Python)", style=filled, fillcolor="#FFE6E6"];
         write_labels_run[label="Save Condition Order to File (Python)", style=filled, fillcolor="#FFE6E6"];
         level1_conest_multi[label="Estimate Single Condition Contrasts (SPM)", style=filled, fillcolor="#FFE6E6"];
@@ -42,19 +41,10 @@ digraph analysis_first{
         comp_con_per_run -> level1_conest_multi;
         level1_conest_multi -> normalize_multi;
     }
-    get_param -> nuisance_reg [color="#00000000"];
+    collect_files -> get_model_param [color="#00000000"];
     nuisance_reg -> get_model_param [color="#00000000"];
     normalize_uni -> comp_con_per_run [color="#00000000"];
     write_labels_run -> level1_conest_multi [color="#00000000"];
-    collect_files -> get_param;
-    collect_files -> nuisance_reg;
-    collect_files -> get_model_param;
-    collect_files -> model_spec;
-    collect_files -> normalize_uni;
-    collect_files -> normalize_multi;
-    get_param -> model_spec;
-    get_param -> level1_design;
-    get_param -> level1_conest_uni;
     get_model_param -> comp_con_per_run;
     level1_conest_uni -> normalize_uni;
     level1_est -> level1_conest_multi;

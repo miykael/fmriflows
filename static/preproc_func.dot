@@ -3,21 +3,18 @@ digraph preproc_func{
       edge [color="#0000FF"];
       style=filled;
       fillcolor="#B4B4FF";
-      label="Functional Preprocessing";
-      motion_estimation[label="Estimate Original Motion (FSL)", style=filled, fillcolor="#E6E6FF"];
-      motion_parameters[label="Create New Motion Parameters (Python)", style=filled, fillcolor="#E6E6FF"];
-      slice_time[label="Slice Time Correction (SPM)", style=filled, fillcolor="#E6E6FF"];
-      get_Param[label="Collect Analysis Parameters (Python)", style=filled, fillcolor="#E6E6FF"];
-      inputnode[label="Collect Input Files (Nipype)", style=filled, fillcolor="#E6E6FF"];
-      apply_warp[label="Apply MC (& Normalization) Warp (C3D & ANTs)", style=filled, fillcolor="#E6E6FF"];
+      motion_estimation[label="Estimate Motion\nParameter (FSL)", style=filled, fillcolor="#E6E6FF"];
+      motion_parameters[label="Create New Motion\nParameters (Python)", style=filled, fillcolor="#E6E6FF"];
+      slice_time[label="Slice Time\nCorrection (SPM)", style=filled, fillcolor="#E6E6FF"];
+      apply_warp[label="Spatial Interpolation\n(C3D & ANTs)", style=filled, fillcolor="#E6E6FF"];
     subgraph cluster_prepareflow {
             edge [color="#FF0000"];
             style=filled;
             fillcolor="#FFB4B4";
-            label="Prepare Workflow";
+            label=<<B>Prepare Workflow</B>>;
             prepareflow_reorient[label="Reorient Image (Nipye)", style=filled, fillcolor="#FFE6E6"];
-            prepareflow_nss_detection[label="Non-Steady-State Detection (Nipype)", style=filled, fillcolor="#FFE6E6"];
-            prepareflow_brain_extraction[label="Create Brain Mask (ANTs, FSL & Nilearn)", style=filled, fillcolor="#FFE6E6"];
+            prepareflow_nss_detection[label="Non-Steady-State\nDetection (Nipype)", style=filled, fillcolor="#FFE6E6"];
+            prepareflow_brain_extraction[label="Create Brain Mask\n(ANTs, FSL & Nilearn)", style=filled, fillcolor="#FFE6E6"];
             prepareflow_reorient -> prepareflow_nss_detection;
             prepareflow_reorient -> prepareflow_brain_extraction;
     }
@@ -25,27 +22,23 @@ digraph preproc_func{
             edge [color="#FF0000"];
             style=filled;
             fillcolor="#FFB4B4";
-            label="Coregistration Workflow";
-            coregflow_coreg_pre[label="Initial Coregistration (FSL)", style=filled, fillcolor="#FFE6E6"];
-            coregflow_coreg_bbr[label="White Matter Boundary-Based Registration (FSL)", style=filled, fillcolor="#FFE6E6"];
+            label=<<B>Coregistration Workflow</B>>;
+            coregflow_coreg_pre[label="Initial Coregistration\n(FSL)", style=filled, fillcolor="#FFE6E6"];
+            coregflow_coreg_bbr[label="WM Boundary-Based\nRegistration (FSL)", style=filled, fillcolor="#FFE6E6"];
             coregflow_coreg_pre -> coregflow_coreg_bbr;
     }
     subgraph cluster_filterflow {
             edge [color="#FF0000"];
             style=filled;
             fillcolor="#FFB4B4";
-            label="Filter Workflow";
-            filterflow_warp_masks[label="Warped Brain Masks (ANTs, FSL & Nilearn)", style=filled, fillcolor="#FFE6E6"];
-            filterflow_temporal_filter[label="Temporal Filter (AFNI & Nilearn)", shape=box3d,style=filled, color=black, colorscheme=greys7, fillcolor=2];
+            label=<<B>Filter Workflow</B>>;
+            filterflow_warp_masks[label="Warped Brain Masks\n(ANTs, FSL & Nilearn)", style=filled, fillcolor="#FFE6E6"];
+            filterflow_temporal_filter[label="Temporal Filter\n(AFNI & Nilearn)", shape=box3d,style=filled, color=black, colorscheme=greys7, fillcolor=2];
             filterflow_spatial_filter[label="Spatial Filter (Nilearn)", shape=box3d,style=filled, color=black, colorscheme=greys7, fillcolor=2];
             filterflow_warp_masks -> filterflow_temporal_filter;
             filterflow_temporal_filter -> filterflow_spatial_filter;
     }
-    get_Param -> prepareflow_reorient [color="#00000000"];
-    prepareflow_brain_extraction -> slice_time [color="#00000000"];
-    prepareflow_nss_detection -> prepareflow_brain_extraction [color="#00000000"];
-    coregflow_coreg_bbr -> motion_parameters [color="#00000000"];
-    inputnode -> prepareflow_reorient;
+    motion_parameters -> slice_time [color="#00000000"];
     prepareflow_reorient -> motion_estimation;
     prepareflow_brain_extraction -> motion_estimation;
     prepareflow_nss_detection -> motion_estimation;
@@ -58,11 +51,6 @@ digraph preproc_func{
     coregflow_coreg_bbr -> apply_warp;
     prepareflow_nss_detection -> apply_warp;
     apply_warp -> filterflow_warp_masks;
-    get_Param -> slice_time;
-    get_Param -> motion_parameters;
-    get_Param -> filterflow_warp_masks;
-    get_Param -> filterflow_temporal_filter;
-    get_Param -> prepareflow_brain_extraction;
   }
 }
 
