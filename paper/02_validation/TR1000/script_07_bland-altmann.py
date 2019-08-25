@@ -112,77 +112,80 @@ def bland_altman_values(data1_file,
     data2 = data2[in_mask_indices]
 
     mean = np.mean([data1, data2], axis=0)
+    ci_values = 1.96 * np.std([data1, data2], axis=0) / np.sqrt(2)
     diff = data1 - data2  # Difference between data1 and data2
 
     md = np.mean(diff)  # Mean of the difference
     sd = np.std(diff, axis=0)  # Standard deviation of the difference
 
-    return mean, diff, md, sd
+    return mean, diff, ci_values, md, sd
 
 
 def bland_altman_plot(f, gs, stat_file_1, stat_file_2, con, comparison,
-                      x_lab, y_lab, reslice_on_2=True, filename=None,
+                      res_path, reslice_on_2=True, filename=None,
                       lims=(-8, 8, -6, 6)):
-    ax1 = f.add_subplot(gs[:-1, 1:5])
-    mean, diff, md, sd = bland_altman_values(
+    ax1 = f.add_subplot(gs[:-1, 1:9])
+    mean, diff, ci_values, md, sd = bland_altman_values(
         stat_file_1, stat_file_2, reslice_on_2)
     print(con, mean.min(), mean.max(), diff.min(), diff.max())
     hb = ax1.hexbin(mean, diff, bins='log', cmap='viridis', gridsize=50,
                     extent=lims)
     ax1.axis(lims)
-    ax1.axhline(linewidth=1, color='y')
-    ax1.set_title('{0} - {1}'.format(*comparison))
+    ax1.axhline(linewidth=3.5, color='y')
     stepsize = int(len(mean) / 10000)
     x = mean[np.argsort(mean)][::stepsize]
     y = diff[np.argsort(mean)][::stepsize]
+    ci = ci_values[np.argsort(mean)][::stepsize]
     ys = lowess(y, x)[:, 1]
-    ax1.plot(x, ys, '--r')
+    yci = lowess(ci, x)[:, 1]
+    plt.plot(x, ys, '--r', linewidth=3.5)
+    plt.plot(x, ys+yci, ':w', linewidth=2.5)
+    plt.plot(x, ys-yci, ':w', linewidth=2.5)
     ax2 = f.add_subplot(gs[:-1, 0], xticklabels=[], sharey=ax1)
     ax2.set_ylim(lims[2:4])
     ax2.hist(diff, 100, range=lims[2:4],histtype='stepfilled',
-             orientation='horizontal', color='gray')
+                orientation='horizontal', color='gray')
     ax2.invert_xaxis()
-    ax2.set_ylabel('Difference' + y_lab)
-    ax3 = f.add_subplot(gs[-1, 1:5], yticklabels=[], sharex=ax1)
+    ax3 = f.add_subplot(gs[-1, 1:9], yticklabels=[], sharex=ax1)
     ax3.hist(mean, 100, range=lims[0:2],histtype='stepfilled',
-             orientation='vertical', color='gray')
+                orientation='vertical', color='gray')
     ax3.set_xlim(lims[0:2])
     ax3.invert_yaxis()
-    ax3.set_xlabel('Average' + x_lab)
-    ax4 = f.add_subplot(gs[:-1, 5])
+    ax4 = f.add_subplot(gs[:-1, 9])
     ax4.set_aspect(20)
     pos1 = ax4.get_position()
     ax4.set_position([pos1.x0 - 0.025, pos1.y0, pos1.width, pos1.height])
     cb = f.colorbar(hb, cax=ax4)
-    cb.set_label('log10(N)')
 
     filename = 'fig_{0}_{1}-{2}.svg'.format(con, *comparison)
-    plt.savefig(os.path.join('res_06_bland-altmann', filename))
+    plt.tight_layout()
+    plt.savefig(os.path.join(res_path, filename))
+    plt.savefig(os.path.join(res_path, filename.replace('.svg', '.png')))
+    plt.cla()
 
 
 def bland_altman(file_list, categories, con):
 
     plt.style.use('seaborn-colorblind')
+    sns.set_context('talk')
 
     # Create Bland-Altman plots
     if 'con_t' in con:
         s = 'T'
-        lims = (-7, 7, -7, 7)
+        lims = (-4.5, 5.5, -3.75, 4.5)
     else:
         s = 'F'
         lims = (1, 8, -6, 6)
 
-    x_label = ' of {}-statistics'.format(s)
 
     for idx in set(combinations(range(len(categories)), 2)):
         comparison = [categories[idx[0]], categories[idx[1]]]
 
         reslice = comparison[0] == 'SPM'
-        f = plt.figure(figsize=(6, 5))
+        f = plt.figure(figsize=(10*.6, 9*.6))
         gs0 = gridspec.GridSpec(1, 1)
         gs00 = gridspec.GridSpecFromSubplotSpec(
-            5, 6, subplot_spec=gs0[0], hspace=0.50, wspace=1.3)
-        y_label = ' of {0}-statistics ({1} - {2})'.format(s, *comparison)
+            9, 10, subplot_spec=gs0[0], hspace=0.0, wspace=0.0)
         bland_altman_plot(
             f,
             gs00,
@@ -190,8 +193,7 @@ def bland_altman(file_list, categories, con):
             file_list[idx[1]],
             con,
             comparison,
-            x_label,
-            y_label,
+            res_path,
             reslice,
             lims=lims)
 
@@ -214,8 +216,16 @@ categories = ['fmriflows_5', 'fmriflows_none', 'fmriprep', 'fsl', 'spm']
 for con in contrasts:
 
     file_list = [
-        'res_05_2ndlevel/nifti_group_%s_%s.nii.gz' % (con, c)
+        'res_05_2ndlevel_one-sided/nifti_group_%s_%s.nii.gz' % (con, c)
         for c in categories
     ]
 
     bland_altman(file_list, categories, con)
+
+# Create mosaic figure
+!convert res_06_bland-altmann/fig_con_t_gain_fmriflows_5-fmriflows_none.png -alpha off -fill white -colorize 100% res_06_bland-altmann/blank.png
+!montage res_06_bland-altmann/fig_con_t_gain_fmriflows_5-*.png -mode Concatenate -tile 4x1 res_06_bland-altmann/summary_part01.png
+!montage res_06_bland-altmann/blank.png res_06_bland-altmann/fig_con_t_gain_fmriflows_none-*.png -mode Concatenate -tile 4x1 res_06_bland-altmann/summary_part02.png
+!montage res_06_bland-altmann/blank.png res_06_bland-altmann/blank.png res_06_bland-altmann/fig_con_t_gain_fmriprep-*.png -mode Concatenate -tile 4x1 res_06_bland-altmann/summary_part03.png
+!montage res_06_bland-altmann/blank.png res_06_bland-altmann/blank.png res_06_bland-altmann/blank.png res_06_bland-altmann/fig_con_t_gain_fsl-spm.png -mode Concatenate -tile 4x1 res_06_bland-altmann/summary_part04.png
+!montage res_06_bland-altmann/summary_part0?.png -mode Concatenate -tile 1x4 res_06_bland-altmann/summary.png
