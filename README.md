@@ -9,7 +9,7 @@
 
 # fMRIflows
 
-<img src="notebooks/templates/logo_fmriflows.png" width="400px" align="right">
+<img src="notebooks/templates/logo_fmriflows.gif" width="400px" align="right">
 
 **`fMRIflows`** is a collection of fully autonomous uni- & multivariate fMRI processing pipelines. This comprises anatomical and functional preprocessing, estimation of singal confounds, as well as univariate and multivariate analysis on the subject and group level.
 
