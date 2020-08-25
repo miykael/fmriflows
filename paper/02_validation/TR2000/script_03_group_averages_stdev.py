@@ -75,21 +75,21 @@ for method, file_list in [['fsl', files_fsl],
         display_mode='yz',
         cut_coords=[-10, 10],
         colorbar=False,
-        cmap='cividis',
-        threshold=50,
-        vmin=50,
-        vmax=250,
+        cmap='Spectral_r',
+        threshold=90,
+        vmin=90,
+        vmax=300,
         #title=method,
         dim=1,
         annotate=False,
         draw_cross=False,
         black_bg=True,
         figure=fig,
-        )
+    )
     img_tmp = nb.load(template_gm)
     img_tmp = new_img_like(img_tmp, (img_tmp.get_data() >= 0.05).astype('int'),
-        copy_header=True)
-    display.add_contours(img_tmp, color='r', levels=1)
+                           copy_header=True)
+    display.add_contours(img_tmp, color='w')
     fig.savefig('%s/group_stdev_%s.svg' % (res_path, method))
 
     stdev_values.append([method, group_img.get_data()])
@@ -100,9 +100,13 @@ plt.style.use('seaborn-colorblind')
 threshold = 5
 fig = plt.figure(figsize=(8, 4))
 for m, t in stdev_values:
-    sns.kdeplot(t[t > threshold], shade=True, vertical=False, clip=[threshold, 250])
+    sns.kdeplot(t[t > threshold],
+                shade=True,
+                vertical=False,
+                clip=[threshold, 250])
 plt.legend([m for m, t in stdev_values])
-plt.xlabel('Normalized STDEV in voxel between threshold [%d to %d]' % (threshold, 250))
+plt.xlabel('Normalized STDEV in voxel between threshold [%d to %d]' %
+           (threshold, 250))
 plt.ylabel('Percentage of voxels in bin')
 plt.title('Group Average Standard Deviation')
 plt.tight_layout()
