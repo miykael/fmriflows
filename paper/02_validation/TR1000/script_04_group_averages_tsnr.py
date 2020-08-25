@@ -45,7 +45,7 @@ for method, file_list in [['fsl', files_fsl],
         tsnr_list += [math_img('img * %.08f' % np.sqrt(n_volumes), img=f)]
 
     # Concatenate group means
-    group_means = concat_imgs(file_list)
+    group_means = concat_imgs(tsnr_list)
 
     # Only keep voxels that have values in at least 50% of volumes
     group_means = math_img(
@@ -62,17 +62,17 @@ for method, file_list in [['fsl', files_fsl],
         display_mode='xz',
         cut_coords=[-20, 10],
         colorbar=False,
-        cmap='Spectral_r',
-        threshold=400,
-        vmin=350,
-        vmax=1400,
+        cmap='magma',
+        threshold=500,
+        vmin=500,
+        vmax=1500,
         dim=1,
         annotate=False,
         draw_cross=False,
         black_bg=True,
     )
     img_tmp = nb.load(template_gm)
-    display.savefig('%s/group_tsnr%s_%s.svg' % (res_path, postfix, method))
+    display.savefig('%s/group_tsnr_%s.svg' % (res_path, method))
 
     tsnr_values.append([method, group_img.get_data()])
 
