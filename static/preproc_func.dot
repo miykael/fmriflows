@@ -12,7 +12,7 @@ digraph preproc_func{
             style=filled;
             fillcolor="#FFB4B4";
             label=<<B>Prepare Workflow</B>>;
-            prepareflow_reorient[label="Reorient Image (Nipye)", style=filled, fillcolor="#FFE6E6"];
+            prepareflow_reorient[label="Reorient Image (Nipype)", style=filled, fillcolor="#FFE6E6"];
             prepareflow_nss_detection[label="Non-Steady-State\nDetection (Nipype)", style=filled, fillcolor="#FFE6E6"];
             prepareflow_brain_extraction[label="Create Brain Mask\n(ANTs, FSL & Nilearn)", style=filled, fillcolor="#FFE6E6"];
             prepareflow_reorient -> prepareflow_nss_detection;
