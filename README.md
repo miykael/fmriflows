@@ -15,6 +15,8 @@
 
 As is rather obvious, `fMRIflows` was greatly inspired by [fmriprep](https://github.com/poldracklab/fmriprep) and other open source projects and borrows strongly from their ideas and solutions. But while [fmriprep](https://github.com/poldracklab/fmriprep) can be described as a "glass" box software, `fMRIflows` is more like a shoebox. Simple to open, easy to understand what's inside and uncomplicated to replace and change components inside. This is all due to the fact that all the source code of `fMRIflows` is stored within the notebooks.
 
+If you are using **`fMRIflows`** in your publication, please contact the [Michael Notter](https://github.com/miykael) to get further information about how to cite this toolbox, as the publication is currently *in preparation for submission*.
+
 # Installation and Usage
 
 ## Using Containers
