@@ -18,10 +18,10 @@ generate_docker() {
       --user=neuro \
       --workdir /home/neuro \
       --miniconda version="latest" \
-        conda_install="python=3.7 h5py ipython joblib jupyter
-                       jupyter_contrib_nbextensions jupyterlab matplotlib
-                       nb_conda nbformat nipy numpy pandas pytest scikit-image
-                       scikit-learn scipy seaborn sphinx statsmodels traits " \
+        conda_install="python=3.7 h5py ipython joblib jupyter jupyterlab
+                       jupyter_contrib_nbextensions nb_conda nbformat nbconvert=5
+                       matplotlib nipy numpy pandas pytest scipy seaborn sphinx
+                       scikit-image scikit-learn statsmodels traits " \
         pip_install="https://github.com/nipy/nipype/tarball/master
                      https://github.com/miykael/atlasreader/tarball/master
                      datalad[full] duecredit nbval nibabel nilearn
@@ -29,10 +29,10 @@ generate_docker() {
         create_env="neuro" \
         activate=True \
       --miniconda miniconda_version="4.6" \
-        conda_install="python=2.7 h5py hdf5 imageio ipython joblib jupyter
-                       jupyter_contrib_nbextensions jupyterlab matplotlib
-                       nb_conda nbformat nipy numpy pandas pytest scikit-image
-                       scikit-learn scipy seaborn shogun statsmodels " \
+        conda_install="python=2.7 h5py hdf5 imageio ipython joblib jupyter jupyterlab
+                       jupyter_contrib_nbextensions nb_conda nbformat nbconvert=5
+                       matplotlib nipy numpy pandas pytest scipy seaborn shogun
+                       scikit-image scikit-learn statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      dask datalad[full] duecredit nbval nibabel
                      nilearn nistats pprocess pybids autopep8" \
@@ -77,7 +77,7 @@ generate_docker() {
       --run-bash "source activate mvpa && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
       --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"0.0.0.0\" > ~/.jupyter/jupyter_notebook_config.py' \
       --workdir /home/neuro/notebooks \
-      --cmd jupyter-notebook
+      --cmd 'jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --NotebookApp.token=fmriflows'
 }
 
 # Generate Singularity file (does not include last --cmd option)
@@ -96,10 +96,10 @@ generate_singularity() {
       --user=neuro \
       --workdir /home/neuro \
       --miniconda version="latest" \
-        conda_install="python=3.7 h5py ipython joblib jupyter
-                       jupyter_contrib_nbextensions jupyterlab matplotlib
-                       nb_conda nbformat nipy numpy pandas pytest scikit-image
-                       scikit-learn scipy seaborn sphinx statsmodels traits " \
+        conda_install="python=3.7 h5py ipython joblib jupyter jupyterlab
+                       jupyter_contrib_nbextensions nb_conda nbformat nbconvert=5
+                       matplotlib nipy numpy pandas pytest scipy seaborn sphinx
+                       scikit-image scikit-learn statsmodels traits " \
         pip_install="https://github.com/nipy/nipype/tarball/master
                      https://github.com/miykael/atlasreader/tarball/master
                      datalad[full] duecredit nbval nibabel nilearn
@@ -107,10 +107,10 @@ generate_singularity() {
         create_env="neuro" \
         activate=True \
       --miniconda miniconda_version="4.6" \
-        conda_install="python=2.7 h5py hdf5 imageio ipython joblib jupyter
-                       jupyter_contrib_nbextensions jupyterlab matplotlib
-                       nb_conda nbformat nipy numpy pandas pytest scikit-image
-                       scikit-learn scipy seaborn shogun statsmodels " \
+        conda_install="python=2.7 h5py hdf5 imageio ipython joblib jupyter jupyterlab
+                       jupyter_contrib_nbextensions nb_conda nbformat nbconvert=5
+                       matplotlib nipy numpy pandas pytest scipy seaborn shogun
+                       scikit-image scikit-learn statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
                      dask datalad[full] duecredit nbval nibabel
                      nilearn nistats pprocess pybids autopep8" \

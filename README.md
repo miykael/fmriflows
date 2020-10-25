@@ -24,23 +24,17 @@ If you are using **`fMRIflows`** in your publication, please contact the author 
 The best way to use `fMRIflows` is to run it directly within the corresponding container ([Docker](https://www.docker.com/) or [Singularity](https://www.sylabs.io)). The docker image for this can be downloaded from [Docker Hub](https://hub.docker.com/r/miykael/fmriflows/) with the command `docker pull miykael/fmriflows`, and can be run with the command:
 
 ```
-docker run -it --rm -p 8888:8888 -v /home/user/ds001:/data miykael/fmriflows
+docker run -it --rm -p 9999:8888 -v /home/user/ds001:/data miykael/fmriflows
 ```
 
 - The **`-it`** means that docker will be run in an interactive mode.
 - The **`--rm`** means that the docker container (not the image!) will be removed from your system, once you close the container.
-- The **`-p`** flag specifies which port should be used to access the jupyter notebook inside the docker container. The first 4 numbers can be changed, but the second half `:8888` needs to be fix.
+- The **`-p`** flag specifies which port should be used to access the jupyter notebook inside the docker container. The first 4 numbers can be changed (we recommend `9999`), but the second half needs to be fixed to `:8888`.
 - The **`-v`** flag tells docker which folder to mount within the docker container. The path `/home/user/ds001` should therefore point to your BIDS conform dataset.
 
-Once you run this command, you will see something as this:
+Once this command has been executed (note: the terminal will not go back to a new input prompt, but rather stays on this command) you need to copy paste/open the link [http://127.0.0.1:9999/?token=fmriflows](http://127.0.0.1:9999/?token=fmriflows) or [http://localhost:9999/?token=fmriflows](http://localhost:9999/?token=fmriflows) in your web browser to access the jupyter notebooks required to run fMRIflows.
 
-```
-Copy/paste this URL into your browser when you connect for the first time,
-to login with a token:
-    http://(92b4887133c2 or 127.0.0.1):8888/?token=0460d35a43550ca79f0286f03c54b2ca81ed678187a2343d
-```
-
-Remove the hash-number of the beginning of the URL and change the `:8888` to the port number that you set above. For example, if you used the flag `-p 9898:8888`, you're URL will be `http://127.0.0.1:9898/?token=0460d35a43550ca79f0286f03c54b2ca81ed678187a2343d`. Copy past this URL into your webbrowser and you will see the notebooks to run `fMRIflows`.
+**Note**: Should you by any chance encounter a web page that asks you for "Password or token", use the token `fmriflows` to login.
 
 ## Using your native environment
 
