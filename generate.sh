@@ -77,7 +77,7 @@ generate_docker() {
       --run-bash "source activate mvpa && jupyter nbextension enable exercise2/main && jupyter nbextension enable hide_input/main && jupyter nbextension enable code_prettify/autopep8 && jupyter nbextension enable hide_input_all/main && jupyter nbextension enable printview/main && jupyter nbextension enable spellchecker/main" \
       --run 'mkdir -p ~/.jupyter && echo c.NotebookApp.ip = \"0.0.0.0\" > ~/.jupyter/jupyter_notebook_config.py' \
       --workdir /home/neuro/notebooks \
-      --cmd jupyter-notebook
+      --cmd 'jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --NotebookApp.token=fmriflows'
 }
 
 # Generate Singularity file (does not include last --cmd option)
