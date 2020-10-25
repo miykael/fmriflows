@@ -15,16 +15,23 @@ def prepare_test_data():
 
     print('Download required data.')
     task = 'fingerfootlips'
-    cmd = 'datalad -C /home/neuro get -J 4 '
+    cmd = 'datalad -C /home/neuro/ds000114 get -J 4 '
     for i in [1, 2]:
-        cmd += 'ds000114/sub-%02d/ses-test/anat/' % i
+        cmd += 'sub-%02d/ses-test/anat/' % i
         cmd += 'sub-%02d_ses-test_T1w.nii.gz ' % i
-        cmd += 'ds000114/sub-%02d/ses-test/func/' % i
+        cmd += 'sub-%02d/ses-test/func/' % i
         cmd += 'sub-%02d_ses-test_task-%s_bold.nii.gz ' % (i, task)
     os.system(cmd)
 
     print('Move test data to data folder.')
     os.system('cp -RL /home/neuro/ds000114/* /data/.')
+
+    # Rename functional files to be BIDS conform
+    print('Make functional images BIDS conform.')
+    for i in [1, 2]:
+        file_idx = '/data/sub-%02d/ses-test/func/sub-%02d_ses-test_task-%s_bold.nii.gz ' % (i, i, task)
+        cmd = 'mv %s %s' % (file_idx, file_idx.replace('_bold', '_run-01_bold'))
+        os.system(cmd)
 
 
 def reduce_specs():
