@@ -19,7 +19,7 @@ generate_docker() {
       --workdir /home/neuro \
       --miniconda version="latest" \
         conda_install="python=3.7 h5py ipython joblib jupyter
-                       jupyter_contrib_nbextensions jupyterlab matplotlib
+                       jupyter_contrib_nbextensions=5 jupyterlab matplotlib
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/nipy/nipype/tarball/master
@@ -30,7 +30,7 @@ generate_docker() {
         activate=True \
       --miniconda miniconda_version="4.6" \
         conda_install="python=2.7 h5py hdf5 imageio ipython joblib jupyter
-                       jupyter_contrib_nbextensions jupyterlab matplotlib
+                       jupyter_contrib_nbextensions=5 jupyterlab matplotlib
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
@@ -97,7 +97,7 @@ generate_singularity() {
       --workdir /home/neuro \
       --miniconda version="latest" \
         conda_install="python=3.7 h5py ipython joblib jupyter
-                       jupyter_contrib_nbextensions jupyterlab matplotlib
+                       jupyter_contrib_nbextensions=5 jupyterlab matplotlib
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn sphinx statsmodels traits " \
         pip_install="https://github.com/nipy/nipype/tarball/master
@@ -108,7 +108,7 @@ generate_singularity() {
         activate=True \
       --miniconda miniconda_version="4.6" \
         conda_install="python=2.7 h5py hdf5 imageio ipython joblib jupyter
-                       jupyter_contrib_nbextensions jupyterlab matplotlib
+                       jupyter_contrib_nbextensions=5 jupyterlab matplotlib
                        nb_conda nbformat nipy numpy pandas pytest scikit-image
                        scikit-learn scipy seaborn shogun statsmodels " \
         pip_install="https://github.com/miykael/atlasreader/tarball/master
