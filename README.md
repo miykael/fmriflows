@@ -5,7 +5,6 @@
 [![GitHub Commits](https://github-basic-badges.herokuapp.com/commits/miykael/fmriflows.svg)](https://github.com/miykael/fmriflows/commits/master)
 [![GitHub size](https://github-size-badge.herokuapp.com/miykael/fmriflows.svg)](https://github.com/miykael/fmriflows/archive/master.zip)
 [![Docker Hub](https://img.shields.io/docker/pulls/miykael/fmriflows.svg?maxAge=2592000)](https://hub.docker.com/r/miykael/fmriflows/)
-[![GitHub HitCount](http://hits.dwyl.io/miykael/fmriflows.svg)](http://hits.dwyl.io/miykael/fmriflows)
 
 # fMRIflows
 
