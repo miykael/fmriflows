@@ -49,7 +49,7 @@ The notebook [01_spec_preparation.ipynb](https://nbviewer.jupyter.org/github/miy
 
 ## 02_preproc_anat.ipynb
 
-The notebook [02_preproc_anat.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/01_spec_preparation.ipynb) contains perform anatomical preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
+The notebook [02_preproc_anat.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/02_preproc_anat.ipynb) contains perform anatomical preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
 
  - `subject_list_anat`: List of subject identifier to preprocess
  - `session_list_anat`: List of session identifier to preprocess (set to `[]` if dataset doesn't contain session identifiers)
@@ -80,7 +80,7 @@ This panel shows the quality of the nonlinear template registration. The normali
 
 ## 03_preproc_func.ipynb
 
-The notebook [03_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/01_spec_preparation.ipynb) contains perform functional preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
+The notebook [03_preproc_func.ipynb](https://nbviewer.jupyter.org/github/miykael/fmriflows/blob/master/notebooks/03_preproc_func.ipynb) contains perform functional preprocessing. Parameters that can be specified in the [`fmriflows_spec_preproc.json`](https://github.com/miykael/fmriflows/blob/master/static/fmriflows_spec_preproc.json) file are the following:
 
  - `subject_list_func`: List of subject identifier to preprocess
  - `session_list_func`: List of session identifier to preprocess (set to `[]` if dataset doesn't contain session identifiers)
